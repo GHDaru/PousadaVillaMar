@@ -1,5 +1,4 @@
 
-import React from 'react';
 import { Wifi, Wind, Coffee, ShieldCheck, MapPin, Phone, Clock, Home, Bed, User } from 'lucide-react';
 import { Amenity, Room } from './types';
 
@@ -56,7 +55,7 @@ export const AMENITIES: Amenity[] = [
   {
     icon: <MapPin className="w-6 h-6" />,
     title: 'Localização Privilegiada',
-    description: 'Situada em Ubatuba (Enseada), a poucos passos da praia.'
+    description: 'Situada na Enseada de São Francisco do Sul, a poucos passos da praia.'
   },
   {
     icon: <Home className="w-6 h-6" />,
