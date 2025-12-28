@@ -10,7 +10,7 @@ const Location: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16">
           <div className="lg:w-1/2">
             <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Onde Estamos</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-10">Ubatuba, Enseada <br/><span className="font-serif italic font-normal text-villa-sea">Sua casa na praia.</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-10">Enseada, São Francisco do Sul <br/><span className="font-serif italic font-normal text-villa-sea">Sua casa na praia.</span></h2>
             
             <div className="space-y-8">
               <div className="flex gap-6 items-start">
@@ -20,7 +20,7 @@ const Location: React.FC = () => {
                 <div>
                   <h4 className="font-bold text-xl text-villa-deep mb-2">Endereço</h4>
                   <p className="text-slate-600">{BRAND.address}</p>
-                  <p className="text-slate-500 text-sm mt-1">Bairro Enseada, São Francisco do Sul - SC</p>
+                  <p className="text-slate-500 text-sm mt-1">Bairro Enseada - Próximo à praia</p>
                 </div>
               </div>
 

@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex flex-col">
                 <span className="text-xs uppercase opacity-50">E-mail</span>
-                <span className="font-bold text-white">contato@villamarubatuba.com.br</span>
+                <span className="font-bold text-white">{BRAND.email}</span>
               </li>
               <li className="flex flex-col">
                 <span className="text-xs uppercase opacity-50">Atendimento</span>
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-white/40 gap-4">
           <p>© {new Date().getFullYear()} Pousada Villa & Mar. Todos os direitos reservados.</p>
-          <p>Ubatuba, São Francisco do Sul - SC</p>
+          <p>Enseada, São Francisco do Sul - SC</p>
           <div className="flex gap-6">
             <a href="#" className="hover:underline">Políticas de Reserva</a>
             <a href="#" className="hover:underline">Termos de Uso</a>
