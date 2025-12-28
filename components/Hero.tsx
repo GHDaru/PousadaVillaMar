@@ -8,9 +8,12 @@ const Hero: React.FC = () => {
     <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
+        {/* TODO: SUBSTITUIR POR FOTO REAL DA PRAIA DA ENSEADA DE SÃO FRANCISCO DO SUL 
+            Recomendações: foto em alta resolução (mínimo 1920x1080), 
+            mostrando a praia, o mar e preferencialmente no horário do pôr do sol para criar atmosfera acolhedora */}
         <img 
           src="https://picsum.photos/id/354/1920/1080" 
-          alt="Vista da praia de Ubatuba" 
+          alt="Vista da Praia da Enseada em São Francisco do Sul" 
           className="w-full h-full object-cover brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/90"></div>
@@ -18,7 +21,7 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <span className="inline-block text-white uppercase tracking-[0.3em] text-xs md:text-sm font-semibold mb-4 animate-in fade-in slide-in-from-bottom-2 duration-700">
-          Ubatuba • São Francisco do Sul
+          Enseada • São Francisco do Sul • SC
         </span>
         <h1 className="text-5xl md:text-7xl lg:text-8xl text-white font-bold mb-6 drop-shadow-lg leading-tight animate-in fade-in slide-in-from-bottom-4 duration-1000">
           Descanso de casa,<br/>

@@ -7,11 +7,13 @@ export const BRAND = {
   name: 'Pousada Villa & Mar',
   slogan: 'Aconchego de casa, a poucos passos do mar.',
   tagline: 'Seu lugar de descanso entre o mar e a rotina.',
-  address: 'Rua Jaguaruna, 244 - Ubatuba, São Francisco do Sul - SC',
+  address: 'Rua Jaguaruna, 244 - Enseada, São Francisco do Sul - SC',
   contact: 'Susana Moreira',
-  phone: '47 997158173',
+  phone: '(47) 99715-8173',
   phoneFormatted: '+5547997158173',
   airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
+  bookingUrl: 'https://www.booking.com', // TODO: Adicionar URL real do Booking quando disponível
+  email: 'contato@villamarenseada.com.br',
 };
 
 export const LOGO_SVG = (className?: string) => (
@@ -66,26 +68,42 @@ export const AMENITIES: Amenity[] = [
 export const ROOMS: Room[] = [
   {
     id: 'suite-premium',
-    name: 'Suíte Master',
-    description: 'O máximo de privacidade e conforto com banheiro exclusivo.',
+    name: 'Suíte Master com Banheiro Privativo',
+    description: 'O máximo de privacidade e conforto. Suíte exclusiva com banheiro privativo, perfeita para casais.',
     isSuite: true,
-    features: ['Banheiro Privativo', 'Ventilador', 'Cama de Casal', 'Mesa de Trabalho'],
-    imageUrl: 'https://picsum.photos/id/274/800/600'
+    features: ['Banheiro Privativo', 'Ventilador', 'Cama de Casal', 'Wi-Fi de Alta Velocidade'],
+    imageUrl: 'https://picsum.photos/id/274/800/600' // TODO: Substituir por foto real da suíte
   },
   {
-    id: 'quarto-familia',
-    name: 'Quarto Família',
-    description: 'Espaçoso, ideal para quem viaja com filhos.',
+    id: 'quarto-standard-1',
+    name: 'Quarto Standard',
+    description: 'Aconchegante e bem equipado, com acesso a banheiros compartilhados.',
     isSuite: false,
-    features: ['Banheiro Compartilhado', 'Ventilador', 'Cama de Casal + Solteiro'],
-    imageUrl: 'https://picsum.photos/id/296/800/600'
+    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
+    imageUrl: 'https://picsum.photos/id/296/800/600' // TODO: Substituir por foto real do quarto
   },
   {
-    id: 'quarto-executivo',
-    name: 'Quarto Executivo',
-    description: 'Silencioso e prático, perfeito para quem busca foco.',
+    id: 'quarto-standard-2',
+    name: 'Quarto Standard',
+    description: 'Confortável e tranquilo, ideal para descansar após um dia de praia.',
     isSuite: false,
-    features: ['Banheiro Compartilhado', 'Ventilador', 'Mesa de Trabalho', 'Silencioso'],
-    imageUrl: 'https://picsum.photos/id/164/800/600'
+    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
+    imageUrl: 'https://picsum.photos/id/164/800/600' // TODO: Substituir por foto real do quarto
+  },
+  {
+    id: 'quarto-standard-3',
+    name: 'Quarto Standard',
+    description: 'Espaço acolhedor com tudo que você precisa para uma estadia perfeita.',
+    isSuite: false,
+    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
+    imageUrl: 'https://picsum.photos/id/1018/800/600' // TODO: Substituir por foto real do quarto
+  },
+  {
+    id: 'quarto-standard-4',
+    name: 'Quarto Standard',
+    description: 'Quarto bem ventilado e iluminado, próximo às áreas comuns.',
+    isSuite: false,
+    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
+    imageUrl: 'https://picsum.photos/id/1019/800/600' // TODO: Substituir por foto real do quarto
   }
 ];
