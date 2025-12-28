@@ -1,0 +1,7 @@
+{
+  "name": "Pousada Villa & Mar",
+  "description": "Website oficial da Pousada Villa & Mar em Ubatuba, Santa Catarina. Um refúgio aconchegante que une o descanso de casa com o charme do mar.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
