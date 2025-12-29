@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { ROOMS, BRAND } from '../constants';
-import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 
 const Rooms: React.FC = () => {
   const [selectedRoom, setSelectedRoom] = useState(ROOMS[0]);
@@ -126,23 +126,16 @@ const Rooms: React.FC = () => {
                 ))}
               </div>
 
-              {/* Booking Buttons */}
+              {/* WhatsApp Reservation Button */}
               <div className="flex flex-col gap-3">
                 <a 
-                  href={BRAND.airbnbUrl} 
+                  href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva para ${selectedRoom.name}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center bg-villa-deep text-white py-4 rounded-xl font-bold hover:bg-villa-sea hover:scale-105 transition-all"
+                  className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-xl font-bold hover:bg-[#128C7E] hover:scale-105 transition-all"
                 >
-                  Reservar no Airbnb
-                </a>
-                <a 
-                  href={BRAND.bookingUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center border-2 border-villa-deep text-villa-deep py-4 rounded-xl font-bold hover:bg-villa-deep hover:text-white transition-all"
-                >
-                  Reservar no Booking
+                  <MessageCircle size={20} />
+                  Reservar pelo WhatsApp
                 </a>
               </div>
             </div>
@@ -200,20 +193,13 @@ const Rooms: React.FC = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href={BRAND.airbnbUrl} 
+                  href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva da casa completa para um grupo.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-villa-deep px-8 py-4 rounded-xl font-bold hover:bg-villa-sea hover:text-white transition-all text-center"
+                  className="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#128C7E] transition-all"
                 >
-                  Reservar no Airbnb
-                </a>
-                <a 
-                  href={BRAND.bookingUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-villa-gold text-villa-deep px-8 py-4 rounded-xl font-bold hover:bg-white transition-all text-center"
-                >
-                  Reservar no Booking
+                  <MessageCircle size={20} />
+                  Reservar pelo WhatsApp
                 </a>
               </div>
             </div>
