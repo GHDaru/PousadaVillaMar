@@ -9,6 +9,7 @@ export interface Room {
   price?: string;
   features: string[];
   imageUrl: string;
+  images?: string[];
   isSuite: boolean;
 }
 
