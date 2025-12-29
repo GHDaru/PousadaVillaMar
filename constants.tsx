@@ -6,7 +6,7 @@ export const BRAND = {
   name: 'Pousada Villa & Mar',
   slogan: 'Aconchego de casa, a poucos passos do mar.',
   tagline: 'Seu lugar de descanso entre o mar e a rotina.',
-  address: 'São Francisco do Sul - SC',
+  address: 'Rua Jaguaruna, 244, Ubatuba, São Francisco do Sul - SC',
   contact: 'Susana Moreira',
   phone: '(47) 99715-8173',
   phoneFormatted: '+5547997158173',
