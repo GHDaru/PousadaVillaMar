@@ -8,12 +8,9 @@ const Hero: React.FC = () => {
     <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
-        {/* TODO: SUBSTITUIR POR FOTO REAL DA PRAIA DA ENSEADA DE SÃO FRANCISCO DO SUL 
-            Recomendações: foto em alta resolução (mínimo 1920x1080), 
-            mostrando a praia, o mar e preferencialmente no horário do pôr do sol para criar atmosfera acolhedora */}
         <img 
-          src="https://picsum.photos/id/354/1920/1080" 
-          alt="Vista da Praia da Enseada em São Francisco do Sul" 
+          src="/fotos/foto01exterior.jpeg" 
+          alt="Fachada de sobrado com sacada longa, grade frontal e garagem coberta" 
           className="w-full h-full object-cover brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/90"></div>

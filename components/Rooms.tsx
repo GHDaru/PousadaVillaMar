@@ -10,7 +10,7 @@ const Rooms: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Acomodações</span>
           <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-6">Escolha o seu refúgio</h2>
-          <p className="text-slate-600">Oferecemos 1 suíte com banheiro privativo e 4 quartos confortáveis com acesso a 2 banheiros compartilhados. Todos equipados com ventilador e Wi-Fi de alta velocidade. Ou alugue a casa inteira!</p>
+          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 13 hóspedes. Ou alugue a casa inteira!</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -66,13 +66,14 @@ const Rooms: React.FC = () => {
             <div className="md:w-2/3">
               <h3 className="text-3xl md:text-4xl font-bold mb-6 font-serif">A casa completa para você.</h3>
               <p className="text-white/80 text-lg mb-8">
-                Planejando um evento familiar ou viagem em grupo? A Villa & Mar oferece locação completa: 5 quartos no total (sendo 1 suíte com banheiro privativo), 2 banheiros compartilhados, sala de estar ampla, cozinha equipada e área de lazer com churrasqueira. Perfeito para reunir a família!
+                Planejando um evento familiar ou viagem em grupo? A Villa & Mar oferece locação completa: 5 quartos, 6 camas, 3 banheiros, sala de estar ampla integrada à cozinha, área gourmet com churrasqueira e garagem coberta. Perfeito para reunir a família!
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Capacidade até 12 pessoas</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">5 Quartos (1 Suíte)</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Até 13 hóspedes</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">5 Quartos • 6 Camas</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Área Gourmet</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Estacionamento</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Garagem Coberta</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Pet Friendly</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 

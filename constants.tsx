@@ -1,18 +1,24 @@
 
-import { Wifi, Wind, Coffee, ShieldCheck, MapPin, Phone, Clock, Home, Bed, User } from 'lucide-react';
+import { Wifi, Wind, Home, ShieldCheck, MapPin, Utensils, PawPrint, Car } from 'lucide-react';
 import { Amenity, Room } from './types';
 
 export const BRAND = {
   name: 'Pousada Villa & Mar',
   slogan: 'Aconchego de casa, a poucos passos do mar.',
   tagline: 'Seu lugar de descanso entre o mar e a rotina.',
-  address: 'Rua Jaguaruna, 244 - Enseada, São Francisco do Sul - SC',
+  address: 'São Francisco do Sul - SC',
   contact: 'Susana Moreira',
   phone: '(47) 99715-8173',
   phoneFormatted: '+5547997158173',
   airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
-  bookingUrl: 'https://www.booking.com', // TODO: Adicionar URL real do Booking quando disponível
+  bookingUrl: 'https://www.booking.com',
   email: 'contato@villamarenseada.com.br',
+  capacity: '13 hóspedes',
+  rooms: '5 quartos',
+  beds: '6 camas',
+  bathrooms: '3 banheiros',
+  checkIn: '13:00',
+  checkOut: '11:00',
 };
 
 export const LOGO_SVG = (className?: string) => (
@@ -34,75 +40,59 @@ export const LOGO_SVG = (className?: string) => (
 export const AMENITIES: Amenity[] = [
   {
     icon: <Wifi className="w-6 h-6" />,
-    title: 'Wi-Fi de Alta Qualidade',
-    description: 'Conexão estável ideal para trabalho remoto e streaming.'
+    title: 'Wi-Fi Rápido',
+    description: 'Conexão estável e rápida em toda a propriedade, ideal para trabalho remoto.'
   },
   {
     icon: <Wind className="w-6 h-6" />,
-    title: 'Ventilação',
-    description: 'Todos os quartos equipados com ventiladores potentes.'
+    title: 'Ventiladores em Todos os Quartos',
+    description: 'Todos os dormitórios equipados com ventiladores para seu conforto.'
   },
   {
-    icon: <Coffee className="w-6 h-6" />,
-    title: 'Café da Manhã',
-    description: 'Aconchego com sabores caseiros feitos com carinho.'
+    icon: <Utensils className="w-6 h-6" />,
+    title: 'Área Gourmet',
+    description: 'Churrasqueira de alvenaria com bancada e espaço coberto para reunir o grupo.'
   },
   {
     icon: <ShieldCheck className="w-6 h-6" />,
-    title: 'Segurança e Conforto',
-    description: 'Atendimento 24 horas e ambiente familiar monitorado.'
+    title: 'Segurança Privada',
+    description: 'Rondas noturnas e ambiente monitorado para sua tranquilidade.'
   },
   {
-    icon: <MapPin className="w-6 h-6" />,
-    title: 'Localização Privilegiada',
-    description: 'Situada na Enseada de São Francisco do Sul, a poucos passos da praia.'
+    icon: <Car className="w-6 h-6" />,
+    title: 'Garagem Segura',
+    description: 'Garagem coberta e ampla no térreo com espaço para manobra.'
   },
   {
-    icon: <Home className="w-6 h-6" />,
-    title: 'Casa Completa',
-    description: 'Opção de locação da casa inteira para famílias grandes.'
+    icon: <PawPrint className="w-6 h-6" />,
+    title: 'Pet Friendly',
+    description: 'Seu pet é bem-vindo! Traga toda a família para aproveitar.'
   }
 ];
 
 export const ROOMS: Room[] = [
   {
     id: 'suite-premium',
-    name: 'Suíte Master com Banheiro Privativo',
-    description: 'O máximo de privacidade e conforto. Suíte exclusiva com banheiro privativo, perfeita para casais.',
+    name: 'Suíte',
+    description: 'Quarto confortável com ventilador e boa ventilação.',
     isSuite: true,
-    features: ['Banheiro Privativo', 'Ventilador', 'Cama de Casal', 'Wi-Fi de Alta Velocidade'],
-    imageUrl: 'https://picsum.photos/id/274/800/600' // TODO: Substituir por foto real da suíte
+    features: ['Ventilador de Teto', 'Janela Ampla', 'Wi-Fi de Alta Velocidade'],
+    imageUrl: '/fotos/foto07suite.jpeg'
   },
   {
-    id: 'quarto-standard-1',
-    name: 'Quarto Standard',
-    description: 'Aconchegante e bem equipado, com acesso a banheiros compartilhados.',
+    id: 'quarto-familia',
+    name: 'Quarto Família',
+    description: 'Ideal para família: cama de casal + solteiro com ventilador de teto e acesso à sacada.',
     isSuite: false,
-    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
-    imageUrl: 'https://picsum.photos/id/296/800/600' // TODO: Substituir por foto real do quarto
+    features: ['Cama de Casal + Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
+    imageUrl: '/fotos/foto04Quarto 3.jpeg'
   },
   {
-    id: 'quarto-standard-2',
-    name: 'Quarto Standard',
-    description: 'Confortável e tranquilo, ideal para descansar após um dia de praia.',
+    id: 'quarto-duplo',
+    name: 'Quarto com Duas Camas',
+    description: 'Quarto com duas camas de solteiro, ótimo para amigos ou crianças.',
     isSuite: false,
-    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
-    imageUrl: 'https://picsum.photos/id/164/800/600' // TODO: Substituir por foto real do quarto
-  },
-  {
-    id: 'quarto-standard-3',
-    name: 'Quarto Standard',
-    description: 'Espaço acolhedor com tudo que você precisa para uma estadia perfeita.',
-    isSuite: false,
-    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
-    imageUrl: 'https://picsum.photos/id/1018/800/600' // TODO: Substituir por foto real do quarto
-  },
-  {
-    id: 'quarto-standard-4',
-    name: 'Quarto Standard',
-    description: 'Quarto bem ventilado e iluminado, próximo às áreas comuns.',
-    isSuite: false,
-    features: ['2 Banheiros Compartilhados', 'Ventilador', 'Cama de Casal', 'Wi-Fi'],
-    imageUrl: 'https://picsum.photos/id/1019/800/600' // TODO: Substituir por foto real do quarto
+    features: ['2 Camas de Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
+    imageUrl: '/fotos/foto05Quarto 5.jpeg'
   }
 ];
