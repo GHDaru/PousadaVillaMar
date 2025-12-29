@@ -59,12 +59,10 @@ const Footer: React.FC = () => {
               href={BRAND.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all"
+              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all min-w-[200px]"
             >
-              <div className="flex items-center gap-3">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22c-5.5 0-10-4.5-10-10S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zm5.2-13.5c-.4-.8-1.2-1.4-2.1-1.5-.4 0-.8.1-1.1.3-.3.2-.6.5-.8.9-.2-.4-.5-.7-.8-.9-.3-.2-.7-.3-1.1-.3-.9.1-1.7.7-2.1 1.5-.5 1-.3 2.2.4 3.1L12 15.5l3.4-3.9c.7-.9.9-2.1.4-3.1z"/>
-                </svg>
+              <div className="flex items-center gap-3 flex-1">
+                <Globe size={24} className="flex-shrink-0" />
                 <span className="font-semibold text-lg">Airbnb</span>
               </div>
               <ExternalLink size={18} className="opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -73,12 +71,10 @@ const Footer: React.FC = () => {
               href={BRAND.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all"
+              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all min-w-[200px]"
             >
-              <div className="flex items-center gap-3">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22.5 9.4c0-.5-.4-.9-.9-.9h-4.2c-.5 0-.9.4-.9.9v12.7c0 .5.4.9.9.9h4.2c.5 0 .9-.4.9-.9V9.4zM13.5 1.9c0-.5-.4-.9-.9-.9H8.4c-.5 0-.9.4-.9.9v20.2c0 .5.4.9.9.9h4.2c.5 0 .9-.4.9-.9V1.9zM4.5 5.6c0-.5-.4-.9-.9-.9H-.6c-.5 0-.9.4-.9.9v16.5c0 .5.4.9.9.9h4.2c.5 0 .9-.4.9-.9V5.6z"/>
-                </svg>
+              <div className="flex items-center gap-3 flex-1">
+                <Globe size={24} className="flex-shrink-0" />
                 <span className="font-semibold text-lg">Booking.com</span>
               </div>
               <ExternalLink size={18} className="opacity-60 group-hover:opacity-100 transition-opacity" />
