@@ -1,9 +1,29 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ROOMS, BRAND } from '../constants';
-import { Check, Airplay as Fan, Bath } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Rooms: React.FC = () => {
+  const [selectedRoom, setSelectedRoom] = useState(ROOMS[0]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleRoomSelect = (room: typeof ROOMS[0]) => {
+    setSelectedRoom(room);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    const images = selectedRoom.images || [selectedRoom.imageUrl];
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    const images = selectedRoom.images || [selectedRoom.imageUrl];
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const currentImages = selectedRoom.images || [selectedRoom.imageUrl];
+
   return (
     <section id="quartos" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
@@ -13,54 +33,157 @@ const Rooms: React.FC = () => {
           <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 13 hóspedes. Ou alugue a casa inteira!</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {ROOMS.map((room) => (
-            <div key={room.id} className="group bg-villa-shell rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={room.imageUrl} 
-                  alt={room.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                {room.isSuite && (
-                  <span className="absolute top-4 left-4 bg-villa-deep text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                    Suíte Privativa
-                  </span>
-                )}
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold text-villa-deep mb-3">{room.name}</h3>
-                <p className="text-slate-500 text-sm mb-6 leading-relaxed">{room.description}</p>
-                <div className="space-y-2 mb-8">
-                  {room.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-slate-600">
-                      <Check size={14} className="text-villa-sea" /> {feature}
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col gap-3">
-                  <a 
-                    href={BRAND.airbnbUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center bg-villa-deep text-white py-3 rounded-xl font-bold hover:bg-villa-sea hover:scale-105 transition-all"
-                  >
-                    Ver no Airbnb
-                  </a>
-                  <a 
-                    href={BRAND.bookingUrl} 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center border-2 border-villa-deep text-villa-deep py-3 rounded-xl font-bold hover:bg-villa-deep hover:text-white transition-all"
-                  >
-                    Ver no Booking
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Room Selector Menu */}
+        <div className="mb-12">
+          <div className="flex flex-wrap gap-4 justify-center">
+            {ROOMS.map((room) => (
+              <button
+                key={room.id}
+                onClick={() => handleRoomSelect(room)}
+                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  selectedRoom.id === room.id
+                    ? 'bg-villa-deep text-white shadow-lg scale-105'
+                    : 'bg-villa-shell text-villa-deep hover:bg-villa-sea hover:text-white'
+                }`}
+              >
+                {room.name}
+              </button>
+            ))}
+          </div>
         </div>
 
+        {/* Selected Room Details with Carousel */}
+        <div className="bg-villa-shell rounded-3xl overflow-hidden shadow-xl mb-16">
+          <div className="grid md:grid-cols-2 gap-0">
+            {/* Image Carousel */}
+            <div className="relative h-96 md:h-auto">
+              <img 
+                src={currentImages[currentImageIndex]} 
+                alt={`${selectedRoom.name} - Imagem ${currentImageIndex + 1}`} 
+                className="w-full h-full object-cover"
+              />
+              {selectedRoom.isSuite && (
+                <span className="absolute top-4 left-4 bg-villa-deep text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">
+                  Suíte Privativa
+                </span>
+              )}
+              
+              {/* Carousel Controls */}
+              {currentImages.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
+                    aria-label="Imagem anterior"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-villa-deep" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
+                    aria-label="Próxima imagem"
+                  >
+                    <ChevronRight className="w-6 h-6 text-villa-deep" />
+                  </button>
+                  
+                  {/* Image Indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {currentImages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
+                        }`}
+                        aria-label={`Ir para imagem ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Room Details */}
+            <div className="p-8 md:p-12 flex flex-col justify-center">
+              <h3 className="text-3xl md:text-4xl font-bold text-villa-deep mb-4">{selectedRoom.name}</h3>
+              <p className="text-slate-600 text-lg mb-6 leading-relaxed">{selectedRoom.description}</p>
+              
+              {/* Price */}
+              {selectedRoom.price && (
+                <div className="mb-6 p-4 bg-villa-gold/10 rounded-xl border-2 border-villa-gold/30">
+                  <p className="text-sm text-slate-600 mb-1">Valor</p>
+                  <p className="text-2xl font-bold text-villa-deep">{selectedRoom.price}</p>
+                </div>
+              )}
+
+              {/* Features */}
+              <div className="space-y-3 mb-8">
+                {selectedRoom.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-3 text-slate-700">
+                    <Check size={18} className="text-villa-sea flex-shrink-0" /> 
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Booking Buttons */}
+              <div className="flex flex-col gap-3">
+                <a 
+                  href={BRAND.airbnbUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center bg-villa-deep text-white py-4 rounded-xl font-bold hover:bg-villa-sea hover:scale-105 transition-all"
+                >
+                  Reservar no Airbnb
+                </a>
+                <a 
+                  href={BRAND.bookingUrl} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center border-2 border-villa-deep text-villa-deep py-4 rounded-xl font-bold hover:bg-villa-deep hover:text-white transition-all"
+                >
+                  Reservar no Booking
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* All Rooms Grid */}
+        <div className="mb-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-villa-deep mb-8 text-center">Todos os Quartos</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {ROOMS.map((room) => (
+              <div 
+                key={room.id} 
+                className="group bg-villa-shell rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+                onClick={() => handleRoomSelect(room)}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <img 
+                    src={room.imageUrl} 
+                    alt={room.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  {room.isSuite && (
+                    <span className="absolute top-4 left-4 bg-villa-deep text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                      Suíte Privativa
+                    </span>
+                  )}
+                </div>
+                <div className="p-6">
+                  <h4 className="text-xl font-bold text-villa-deep mb-2">{room.name}</h4>
+                  <p className="text-slate-500 text-sm mb-4 leading-relaxed">{room.description}</p>
+                  {room.price && (
+                    <p className="text-villa-deep font-semibold text-sm">{room.price}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Full House Rental Section */}
         <div className="bg-villa-deep rounded-[3rem] p-10 md:p-16 text-white">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-2/3">

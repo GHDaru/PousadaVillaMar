@@ -76,8 +76,10 @@ export const ROOMS: Room[] = [
     name: 'Suíte',
     description: 'Quarto confortável com ventilador e boa ventilação.',
     isSuite: true,
-    features: ['Ventilador de Teto', 'Janela Ampla', 'Wi-Fi de Alta Velocidade'],
-    imageUrl: '/fotos/foto07suite.jpeg'
+    features: ['Ventilador de Teto', 'Janela Ampla', 'Wi-Fi de Alta Velocidade', 'Banheiro Privativo'],
+    imageUrl: '/fotos/foto07suite.jpeg',
+    images: ['/fotos/foto07suite.jpeg', '/fotos/foto09banheiro inferior.jpeg'],
+    price: 'Consulte disponibilidade'
   },
   {
     id: 'quarto-familia',
@@ -85,7 +87,9 @@ export const ROOMS: Room[] = [
     description: 'Ideal para família: cama de casal + solteiro com ventilador de teto e acesso à sacada.',
     isSuite: false,
     features: ['Cama de Casal + Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
-    imageUrl: '/fotos/foto04Quarto 3.jpeg'
+    imageUrl: '/fotos/foto04Quarto 3.jpeg',
+    images: ['/fotos/foto04Quarto 3.jpeg', '/fotos/foto06sala de tv.jpeg'],
+    price: 'Consulte disponibilidade'
   },
   {
     id: 'quarto-duplo',
@@ -93,6 +97,28 @@ export const ROOMS: Room[] = [
     description: 'Quarto com duas camas de solteiro, ótimo para amigos ou crianças.',
     isSuite: false,
     features: ['2 Camas de Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
-    imageUrl: '/fotos/foto05Quarto 5.jpeg'
+    imageUrl: '/fotos/foto05Quarto 5.jpeg',
+    images: ['/fotos/foto05Quarto 5.jpeg', '/fotos/foto10banheiro superior.jpeg'],
+    price: 'Consulte disponibilidade'
+  },
+  {
+    id: 'quarto-casal',
+    name: 'Quarto Casal',
+    description: 'Quarto aconchegante com cama de casal, perfeito para casais.',
+    isSuite: false,
+    features: ['Cama de Casal', 'Ventilador de Teto', 'Janela Ampla', 'Wi-Fi'],
+    imageUrl: '/fotos/foto04Quarto 3.jpeg',
+    images: ['/fotos/foto04Quarto 3.jpeg'],
+    price: 'Consulte disponibilidade'
+  },
+  {
+    id: 'quarto-standard',
+    name: 'Quarto Standard',
+    description: 'Quarto simples e confortável com cama de solteiro.',
+    isSuite: false,
+    features: ['Cama de Solteiro', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
+    imageUrl: '/fotos/foto05Quarto 5.jpeg',
+    images: ['/fotos/foto05Quarto 5.jpeg'],
+    price: 'Consulte disponibilidade'
   }
 ];
