@@ -2,7 +2,7 @@
 import React from 'react';
 import Logo from './Logo';
 import { BRAND } from '../constants';
-import { Instagram, Facebook, Globe } from 'lucide-react';
+import { Instagram, Facebook, Globe, ExternalLink } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -49,6 +49,40 @@ const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
+        </div>
+        
+        {/* Booking Platforms Connection Section */}
+        <div className="mb-12 pb-12 border-b border-white/10">
+          <h4 className="font-bold text-lg mb-6 text-villa-gold text-center">Também estamos em</h4>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a 
+              href={BRAND.airbnbUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all min-w-[200px]"
+            >
+              <div className="flex items-center gap-3 flex-1">
+                <Globe size={24} className="flex-shrink-0" />
+                <span className="font-semibold text-lg">Airbnb</span>
+              </div>
+              <ExternalLink size={18} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+            </a>
+            <a 
+              href={BRAND.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 px-8 py-4 rounded-xl border border-white/20 transition-all min-w-[200px]"
+            >
+              <div className="flex items-center gap-3 flex-1">
+                <Globe size={24} className="flex-shrink-0" />
+                <span className="font-semibold text-lg">Booking.com</span>
+              </div>
+              <ExternalLink size={18} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+            </a>
+          </div>
+          <p className="text-center text-white/50 text-sm mt-6 italic">
+            Para visualizar nossa pousada nestas plataformas
+          </p>
         </div>
         
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-white/40 gap-4">
