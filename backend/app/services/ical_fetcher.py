@@ -1,7 +1,7 @@
 import httpx
 import asyncio
 from typing import Optional, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class ICSFetcher:
@@ -43,7 +43,7 @@ class ICSFetcher:
             Dict of source_name -> (ics_content, error_message, fetched_at)
         """
         async def fetch_with_name(name: str, url: Optional[str]) -> Tuple[str, Optional[str], Optional[str], datetime]:
-            fetched_at = datetime.utcnow()
+            fetched_at = datetime.now(timezone.utc)
             content, error = await self.fetch_ics(url) if url else (None, "No URL configured")
             return name, content, error, fetched_at
         

@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query, Depends
 from app.models.schemas import CalendarResponse, SourceStatus
@@ -119,7 +119,7 @@ async def _fetch_and_build_calendar(unit, start_date: date, end_date: date) -> C
     blocked_by_day = CalendarMerge.merge_blocked_ranges(all_blocked_ranges)
     
     # Build calendar response
-    last_sync = datetime.utcnow()
+    last_sync = datetime.now(timezone.utc)
     calendar_response = calendar_builder.build_calendar_response(
         unit_id=unit.id,
         timezone=unit.timezone,

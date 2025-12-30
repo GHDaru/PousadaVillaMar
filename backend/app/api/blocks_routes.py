@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Header, Depends
 from typing import Optional
 from app.models.schemas import ManualBlock, CreateManualBlock, SyncResponse, SourceStatus
@@ -107,7 +107,7 @@ async def sync_unit_calendar(unit_id: str):
                 fetched_at=fetched_at
             )
     
-    synced_at = datetime.utcnow()
+    synced_at = datetime.now(timezone.utc)
     
     return SyncResponse(
         unit_id=unit_id,
