@@ -18,6 +18,7 @@ const Navbar: React.FC = () => {
     { name: 'Início', href: '#inicio' },
     { name: 'A Pousada', href: '#sobre' },
     { name: 'Acomodações', href: '#quartos' },
+    { name: 'Aluguel Mensal', href: '#aluguel-mensal', badge: true },
     { name: 'Galeria', href: '#galeria' },
     { name: 'Localização', href: '#localizacao' },
   ];
@@ -35,8 +36,17 @@ const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map(link => (
-            <a key={link.name} href={link.href} className={`text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`}>
+            <a 
+              key={link.name} 
+              href={link.href} 
+              className={`relative text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`}
+            >
               {link.name}
+              {link.badge && (
+                <span className="absolute -top-2 -right-2 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
+                  Novo
+                </span>
+              )}
             </a>
           ))}
           <a 
@@ -63,9 +73,14 @@ const Navbar: React.FC = () => {
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-slate-700 hover:text-villa-sea"
+                className="relative text-lg font-medium text-slate-700 hover:text-villa-sea"
               >
                 {link.name}
+                {link.badge && (
+                  <span className="absolute -top-2 -right-8 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
+                    Novo
+                  </span>
+                )}
               </a>
             ))}
             <a 
