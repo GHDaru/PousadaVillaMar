@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Coffee, Home, Sparkles, Users, Check, MessageCircle } from 'lucide-react';
+import { Calendar, Coffee, Home, Sparkles, Users, Check, MessageCircle, BedSingle } from 'lucide-react';
 import { BRAND } from '../constants';
 
 const MonthlyRental: React.FC = () => {
@@ -171,10 +171,10 @@ const MonthlyRental: React.FC = () => {
                 <div className="mb-8">
                   <div className="bg-gradient-to-br from-amber-50 to-villa-shell border-2 border-villa-gold/30 rounded-2xl p-6 hover:border-villa-gold hover:shadow-xl transition-all relative">
                     <div className="absolute top-2 right-2">
-                      <span className="bg-villa-gold text-white text-xs font-bold px-2 py-1 rounded-full">+ Econômico</span>
+                      <span className="bg-villa-gold text-white text-xs font-bold px-2 py-1 rounded-full">Mais Econômico</span>
                     </div>
                     <div className="flex items-center gap-2 mb-3">
-                      <Coffee size={20} className="text-villa-deep" />
+                      <BedSingle size={20} className="text-villa-deep" />
                       <span className="text-sm font-semibold text-villa-deep uppercase tracking-wide">Cama Individual</span>
                     </div>
                     <div className="mb-3">
