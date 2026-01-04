@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Calendar, Coffee, Home, Sparkles, Users, Check, MessageCircle } from 'lucide-react';
+import { Calendar, Coffee, Home, Sparkles, Users, Check, MessageCircle, BedSingle } from 'lucide-react';
 import { BRAND } from '../constants';
 
 const MonthlyRental: React.FC = () => {
@@ -61,15 +61,15 @@ const MonthlyRental: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <Check size={24} className="text-villa-sea flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-villa-deep">Café da Manhã Simples Incluído</p>
-                      <p className="text-sm text-slate-500">Comece o dia bem alimentado sem preocupações</p>
+                      <p className="font-semibold text-villa-deep">Opções Flexíveis</p>
+                      <p className="text-sm text-slate-500">Quarto completo mensal/semanal ou cama individual mensal</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check size={24} className="text-villa-sea flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-villa-deep">Troca de Roupa de Cama e Toalhas</p>
-                      <p className="text-sm text-slate-500">Limpeza regular para seu conforto</p>
+                      <p className="font-semibold text-villa-deep">Café da Manhã Incluído</p>
+                      <p className="text-sm text-slate-500">Simples para quartos completos, americano para opção cama</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -82,15 +82,21 @@ const MonthlyRental: React.FC = () => {
                   <div className="flex items-start gap-3">
                     <Check size={24} className="text-villa-sea flex-shrink-0 mt-1" />
                     <div>
-                      <p className="font-semibold text-villa-deep">Ambientes Compartilhados</p>
-                      <p className="text-sm text-slate-500">Acesso à sala, copa e churrasqueira</p>
+                      <p className="font-semibold text-villa-deep">Troca de Roupa de Cama e Toalhas</p>
+                      <p className="text-sm text-slate-500">Limpeza regular para seu conforto</p>
                     </div>
                   </div>
                 </div>
 
-                {/* Pricing Cards */}
+                {/* Pricing Section Title */}
+                <div className="mb-6">
+                  <h4 className="text-xl font-bold text-villa-deep mb-2">Quarto Completo - Mensal</h4>
+                  <p className="text-sm text-slate-500">Inclui café da manhã simples e todas as despesas</p>
+                </div>
+
+                {/* Monthly Pricing Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {/* Single Person */}
+                  {/* Single Person Monthly */}
                   <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
                     <div className="flex items-center gap-2 mb-3">
                       <Users size={20} className="text-villa-sea" />
@@ -100,10 +106,10 @@ const MonthlyRental: React.FC = () => {
                       <span className="text-4xl font-bold text-villa-deep">R$ 2.000</span>
                       <span className="text-slate-500">/mês</span>
                     </div>
-                    <p className="text-xs text-slate-500">Tudo incluído</p>
+                    <p className="text-xs text-slate-500">Quarto completo • Tudo incluído</p>
                   </div>
 
-                  {/* Couple */}
+                  {/* Couple Monthly */}
                   <div className="bg-gradient-to-br from-villa-deep to-villa-sea border-2 border-villa-deep rounded-2xl p-6 text-white hover:shadow-xl transition-all relative overflow-hidden">
                     <div className="absolute top-2 right-2">
                       <span className="bg-villa-gold text-villa-deep text-xs font-bold px-2 py-1 rounded-full">Melhor Custo</span>
@@ -116,7 +122,79 @@ const MonthlyRental: React.FC = () => {
                       <span className="text-4xl font-bold">R$ 2.500</span>
                       <span className="text-white/80">/mês</span>
                     </div>
-                    <p className="text-xs text-white/70">Tudo incluído</p>
+                    <p className="text-xs text-white/70">Quarto completo • Tudo incluído</p>
+                  </div>
+                </div>
+
+                {/* Weekly Pricing Section */}
+                <div className="mb-6 mt-8">
+                  <h4 className="text-xl font-bold text-villa-deep mb-2">Quarto Completo - Semanal</h4>
+                  <p className="text-sm text-slate-500">Ideal para estadias mais curtas</p>
+                </div>
+
+                {/* Weekly Pricing Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  {/* Single Person Weekly */}
+                  <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Users size={20} className="text-villa-sea" />
+                      <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">1 Pessoa</span>
+                    </div>
+                    <div className="mb-2">
+                      <span className="text-4xl font-bold text-villa-deep">R$ 700</span>
+                      <span className="text-slate-500">/semana</span>
+                    </div>
+                    <p className="text-xs text-slate-500">Quarto completo • 7 dias</p>
+                  </div>
+
+                  {/* Two People Weekly */}
+                  <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Users size={20} className="text-villa-sea" />
+                      <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">2 Pessoas</span>
+                    </div>
+                    <div className="mb-2">
+                      <span className="text-4xl font-bold text-villa-deep">R$ 900</span>
+                      <span className="text-slate-500">/semana</span>
+                    </div>
+                    <p className="text-xs text-slate-500">Quarto completo • 7 dias</p>
+                  </div>
+                </div>
+
+                {/* Bed Only Option Section */}
+                <div className="mb-6 mt-8">
+                  <h4 className="text-xl font-bold text-villa-deep mb-2">Opção CAMA - Mensal</h4>
+                  <p className="text-sm text-slate-500">Compartilhamento de quarto com café da manhã americano</p>
+                </div>
+
+                {/* Bed Option Card */}
+                <div className="mb-8">
+                  <div className="bg-gradient-to-br from-amber-50 to-villa-shell border-2 border-villa-gold/30 rounded-2xl p-6 hover:border-villa-gold hover:shadow-xl transition-all relative">
+                    <div className="absolute top-2 right-2">
+                      <span className="bg-villa-gold text-white text-xs font-bold px-2 py-1 rounded-full">Mais Econômico</span>
+                    </div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <BedSingle size={20} className="text-villa-deep" />
+                      <span className="text-sm font-semibold text-villa-deep uppercase tracking-wide">Cama Individual</span>
+                    </div>
+                    <div className="mb-3">
+                      <span className="text-4xl font-bold text-villa-deep">R$ 1.000</span>
+                      <span className="text-slate-600">/mês</span>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-villa-sea flex-shrink-0" />
+                        <p className="text-sm text-slate-600">Café da manhã americano incluído</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-villa-sea flex-shrink-0" />
+                        <p className="text-sm text-slate-600">Todas as despesas inclusas</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Check size={16} className="text-villa-sea flex-shrink-0" />
+                        <p className="text-sm text-slate-600">Acesso às áreas comuns</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
