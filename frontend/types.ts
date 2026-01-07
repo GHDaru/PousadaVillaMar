@@ -11,6 +11,9 @@ export interface Room {
   imageUrl: string;
   images?: string[];
   isSuite: boolean;
+  bookingUrl?: string;
+  airbnbUrl?: string;
+  calendarUrl?: string;
 }
 
 export interface Amenity {
