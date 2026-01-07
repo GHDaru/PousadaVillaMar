@@ -137,11 +137,11 @@ export const ROOMS: Room[] = [
     calendarUrl: 'https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics'
   },
   {
-    id: 'casa-inteira',
-    name: 'Casa Inteira',
-    description: 'Toda a casa para você e sua família ou grupo.',
+    id: 'pousada-festas',
+    name: 'Pousada Inteira para Festas',
+    description: 'Toda a pousada para você e seus convidados celebrarem.',
     isSuite: false,
-    features: ['5 Quartos', '6 Camas', '3 Banheiros', 'Área Gourmet', 'Garagem Coberta'],
+    features: ['5 Quartos', '6 Camas', '3 Banheiros', 'Área Gourmet', 'Garagem Coberta', 'Ideal para Eventos'],
     imageUrl: '/fotos/foto01sala estar.jpeg',
     images: ['/fotos/foto01sala estar.jpeg'],
     price: 'Consulte disponibilidade',

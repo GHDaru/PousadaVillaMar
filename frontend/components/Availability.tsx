@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ROOMS } from '../constants';
 import { Calendar } from 'lucide-react';
+import { getRoomPrice, isWeekend, isSpecialDate } from '../pricing';
 // @ts-ignore
 import ICAL from 'ical.js';
 
@@ -175,12 +176,25 @@ const Availability: React.FC = () => {
                       Quarto
                     </div>
                   </th>
-                  {dates.map((date) => (
-                    <th key={date} className="px-2 py-4 text-center min-w-[60px]">
-                      <div className="text-xs font-bold">{getDayOfWeek(date)}</div>
-                      <div className="text-sm">{formatDate(date)}</div>
-                    </th>
-                  ))}
+                  {dates.map((date) => {
+                    const isWeekendDate = isWeekend(date);
+                    const isSpecial = isSpecialDate(date);
+                    const isHighlighted = isWeekendDate || isSpecial;
+                    
+                    return (
+                      <th 
+                        key={date} 
+                        className={`px-2 py-4 text-center min-w-[70px] ${
+                          isHighlighted ? 'bg-villa-gold/20' : ''
+                        }`}
+                      >
+                        <div className={`text-xs font-bold ${isHighlighted ? 'text-villa-gold' : ''}`}>
+                          {getDayOfWeek(date)}
+                        </div>
+                        <div className="text-sm">{formatDate(date)}</div>
+                      </th>
+                    );
+                  })}
                 </tr>
               </thead>
               <tbody>
@@ -192,17 +206,34 @@ const Availability: React.FC = () => {
                     </td>
                     {dates.map((date) => {
                       const isAvailable = room.availability[date];
+                      const price = getRoomPrice(room.roomId, date);
+                      const isWeekendDate = isWeekend(date);
+                      const isSpecial = isSpecialDate(date);
+                      const isHighlighted = isWeekendDate || isSpecial;
+                      
                       return (
-                        <td key={date} className="px-2 py-4 text-center">
+                        <td 
+                          key={date} 
+                          className={`px-2 py-3 text-center ${
+                            isHighlighted ? 'bg-villa-gold/10' : ''
+                          }`}
+                        >
                           <div 
-                            className={`w-10 h-10 rounded-lg mx-auto flex items-center justify-center font-bold text-xs ${
+                            className={`w-full h-auto rounded-lg mx-auto flex flex-col items-center justify-center p-2 ${
                               isAvailable 
                                 ? 'bg-green-100 text-green-700 border-2 border-green-300' 
                                 : 'bg-red-100 text-red-700 border-2 border-red-300'
                             }`}
-                            title={isAvailable ? 'Disponível' : 'Reservado'}
+                            title={isAvailable ? `Disponível - R$ ${price}` : 'Reservado'}
                           >
-                            {isAvailable ? '✓' : '✗'}
+                            <span className="font-bold text-xs">
+                              {isAvailable ? '✓' : '✗'}
+                            </span>
+                            {isAvailable && price && (
+                              <span className="text-[10px] mt-1 font-semibold opacity-70">
+                                R$ {price}
+                              </span>
+                            )}
                           </div>
                         </td>
                       );
@@ -214,7 +245,7 @@ const Availability: React.FC = () => {
           </div>
 
           {/* Legend */}
-          <div className="flex items-center justify-center gap-8 py-6 bg-villa-shell/50 border-t-2 border-villa-shell">
+          <div className="flex flex-wrap items-center justify-center gap-6 py-6 bg-villa-shell/50 border-t-2 border-villa-shell">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-lg bg-green-100 border-2 border-green-300 flex items-center justify-center text-green-700 font-bold text-xs">✓</div>
               <span className="text-sm text-slate-600">Disponível</span>
@@ -222,6 +253,10 @@ const Availability: React.FC = () => {
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded-lg bg-red-100 border-2 border-red-300 flex items-center justify-center text-red-700 font-bold text-xs">✗</div>
               <span className="text-sm text-slate-600">Reservado</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-villa-gold/20 border-2 border-villa-gold/50"></div>
+              <span className="text-sm text-slate-600">Final de semana / Data especial</span>
             </div>
           </div>
         </div>
