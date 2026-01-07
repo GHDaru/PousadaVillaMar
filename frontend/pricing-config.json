@@ -1,0 +1,42 @@
+{
+  "rooms": {
+    "quarto-01": {
+      "name": "Quarto 01",
+      "weekdayPrice": 250,
+      "weekendPrice": 300
+    },
+    "quarto-03": {
+      "name": "Quarto 03",
+      "weekdayPrice": 250,
+      "weekendPrice": 300
+    },
+    "quarto-04": {
+      "name": "Quarto 04",
+      "weekdayPrice": 250,
+      "weekendPrice": 300
+    },
+    "quarto-05": {
+      "name": "Quarto 05",
+      "weekdayPrice": 250,
+      "weekendPrice": 300
+    },
+    "quarto-02": {
+      "name": "Suíte",
+      "weekdayPrice": 400,
+      "weekendPrice": 500
+    },
+    "pousada-festas": {
+      "name": "Pousada Inteira para Festas",
+      "weekdayPrice": 1200,
+      "weekendPrice": 1500
+    }
+  },
+  "specialDates": {
+    "2026": {
+      "01": [9, 10, 16, 17, 23, 24, 30, 31],
+      "02": [6, 7, 13, 14, 15, 16, 17, 20, 21, 27, 28],
+      "03": [6, 7, 13, 14, 20, 21, 27, 28],
+      "04": [3, 4, 10, 11, 17, 18, 19, 20, 21]
+    }
+  }
+}

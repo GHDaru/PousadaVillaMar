@@ -200,24 +200,24 @@ const Rooms: React.FC = () => {
           </div>
         </div>
 
-        {/* Full House Rental Section */}
+        {/* Pousada Inteira para Festas Section */}
         <div className="bg-villa-deep rounded-[3rem] p-10 md:p-16 text-white">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-2/3">
-              <h3 className="text-3xl md:text-4xl font-bold mb-6 font-serif">A casa completa para você.</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Pousada Inteira para Festas</h3>
               <p className="text-white/80 text-lg mb-8">
-                Planejando um evento familiar ou viagem em grupo? A Villa & Mar oferece locação completa: 5 quartos, 6 camas, 3 banheiros, sala de estar ampla integrada à cozinha, área gourmet com churrasqueira e garagem coberta. Perfeito para reunir a família!
+                Planejando um aniversário, casamento ou celebração especial? A Villa & Mar oferece a pousada completa para seu evento: 5 quartos, 6 camas, 3 banheiros, sala de estar ampla integrada à cozinha, área gourmet com churrasqueira e garagem coberta. O espaço ideal para reunir amigos e família em uma celebração inesquecível!
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Até 13 hóspedes</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">5 Quartos • 6 Camas</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Área Gourmet</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Garagem Coberta</span>
-                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Pet Friendly</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Ideal para Eventos</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva da casa completa para um grupo.`}
+                  href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva da pousada inteira para uma festa ou evento.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#128C7E] transition-all"
@@ -232,7 +232,7 @@ const Rooms: React.FC = () => {
                 <div className="text-center">
                   <div className="text-6xl font-serif font-bold mb-2">5</div>
                   <div className="text-sm uppercase tracking-wider opacity-80">Quartos</div>
-                  <div className="text-xs opacity-60 mt-2">1 Suíte + 4 Quartos</div>
+                  <div className="text-xs opacity-60 mt-2">Ideal para Festas</div>
                 </div>
               </div>
             </div>
