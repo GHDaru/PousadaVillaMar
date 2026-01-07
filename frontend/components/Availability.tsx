@@ -224,12 +224,12 @@ const Availability: React.FC = () => {
                                 ? 'bg-green-100 text-green-700 border-2 border-green-300' 
                                 : 'bg-red-100 text-red-700 border-2 border-red-300'
                             }`}
-                            title={isAvailable ? `Disponível - R$ ${price}` : 'Reservado'}
+                            title={isAvailable && price > 0 ? `Disponível - R$ ${price}` : isAvailable ? 'Disponível' : 'Reservado'}
                           >
                             <span className="font-bold text-xs">
                               {isAvailable ? '✓' : '✗'}
                             </span>
-                            {isAvailable && price && (
+                            {isAvailable && price > 0 && (
                               <span className="text-[10px] mt-1 font-semibold opacity-70">
                                 R$ {price}
                               </span>

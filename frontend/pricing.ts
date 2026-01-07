@@ -20,7 +20,9 @@ export interface PricingConfig {
 export const PRICING_CONFIG: PricingConfig = pricingConfig as PricingConfig;
 
 /**
- * Check if a date is a weekend (Friday or Saturday)
+ * Check if a date is a weekend for pricing purposes (Friday or Saturday).
+ * Note: For this business, weekends are defined as Friday and Saturday,
+ * not the traditional Saturday and Sunday.
  */
 export const isWeekend = (dateStr: string): boolean => {
   const date = new Date(dateStr + 'T00:00:00');
@@ -47,11 +49,13 @@ export const isSpecialDate = (dateStr: string): boolean => {
 };
 
 /**
- * Get the price for a room on a specific date
+ * Get the price for a room on a specific date.
+ * Returns the appropriate price based on whether the date is a weekend or special date.
+ * Returns 0 if the room is not found in the pricing configuration.
  */
-export const getRoomPrice = (roomId: string, dateStr: string): number | null => {
+export const getRoomPrice = (roomId: string, dateStr: string): number => {
   const roomPricing = PRICING_CONFIG.rooms[roomId];
-  if (!roomPricing) return null;
+  if (!roomPricing) return 0;
 
   // Special dates and weekends use weekend pricing
   if (isSpecialDate(dateStr) || isWeekend(dateStr)) {
