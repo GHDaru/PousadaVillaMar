@@ -116,6 +116,7 @@ const Rooms: React.FC = () => {
                   <a 
                     href="#disponibilidade" 
                     className="text-sm text-villa-sea hover:text-villa-deep font-semibold underline mt-2 inline-block"
+                    aria-label="Ver tabela de disponibilidade completa de todos os quartos"
                   >
                     Ver disponibilidade completa
                   </a>
@@ -204,6 +205,7 @@ const Rooms: React.FC = () => {
                         href="#disponibilidade" 
                         className="text-xs text-villa-sea hover:text-villa-deep font-semibold underline mt-1 inline-block"
                         onClick={(e) => e.stopPropagation()}
+                        aria-label={`Ver disponibilidade para ${room.name}`}
                       >
                         Ver disponibilidade
                       </a>
