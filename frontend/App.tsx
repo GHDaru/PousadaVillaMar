@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Rooms from './components/Rooms';
+import Availability from './components/Availability';
 import MonthlyRental from './components/MonthlyRental';
 import Gallery from './components/Gallery';
 import Amenities from './components/Amenities';
@@ -18,6 +19,7 @@ function App() {
         <Hero />
         <About />
         <Rooms />
+        <Availability />
         <MonthlyRental />
         <Gallery />
         <Amenities />

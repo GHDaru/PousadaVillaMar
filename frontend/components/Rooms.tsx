@@ -137,6 +137,30 @@ const Rooms: React.FC = () => {
                   <MessageCircle size={20} />
                   Reservar pelo WhatsApp
                 </a>
+                
+                {/* Booking and Airbnb Links */}
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedRoom.bookingUrl && (
+                    <a 
+                      href={selectedRoom.bookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-villa-sea text-white py-3 rounded-xl font-semibold hover:bg-villa-deep hover:scale-105 transition-all text-sm"
+                    >
+                      Ver no Booking
+                    </a>
+                  )}
+                  {selectedRoom.airbnbUrl && (
+                    <a 
+                      href={selectedRoom.airbnbUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 bg-[#FF5A5F] text-white py-3 rounded-xl font-semibold hover:bg-[#E04E53] hover:scale-105 transition-all text-sm"
+                    >
+                      Ver no Airbnb
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>

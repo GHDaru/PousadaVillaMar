@@ -18,7 +18,8 @@ const Navbar: React.FC = () => {
     { name: 'Início', href: '#inicio' },
     { name: 'A Pousada', href: '#sobre' },
     { name: 'Acomodações', href: '#quartos' },
-    { name: 'Aluguel Mensal', href: '#aluguel-mensal', badge: true },
+    { name: 'Disponibilidade', href: '#disponibilidade', badge: true },
+    { name: 'Aluguel Mensal', href: '#aluguel-mensal' },
     { name: 'Galeria', href: '#galeria' },
     { name: 'Localização', href: '#localizacao' },
   ];

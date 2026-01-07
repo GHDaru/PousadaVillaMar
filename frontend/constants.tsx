@@ -72,53 +72,81 @@ export const AMENITIES: Amenity[] = [
 
 export const ROOMS: Room[] = [
   {
-    id: 'suite-premium',
-    name: 'Suíte',
-    description: 'Quarto confortável com ventilador e boa ventilação.',
+    id: 'quarto-01',
+    name: 'Quarto 01',
+    description: 'Quarto triplo confortável com ventilador e boa ventilação.',
+    isSuite: false,
+    features: ['3 Camas', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
+    imageUrl: '/fotos/foto05Quarto 5.jpeg',
+    images: ['/fotos/foto05Quarto 5.jpeg'],
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
+    airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto01',
+    calendarUrl: 'https://ical.booking.com/v1/export/t/5d7051ab-b226-4e57-8042-a2a95cbc8173.ics'
+  },
+  {
+    id: 'quarto-02',
+    name: 'Quarto 02',
+    description: 'Suíte privativa com ventilador e boa ventilação.',
     isSuite: true,
     features: ['Ventilador de Teto', 'Janela Ampla', 'Wi-Fi de Alta Velocidade', 'Banheiro Privativo'],
     imageUrl: '/fotos/foto07suite.jpeg',
     images: ['/fotos/foto07suite.jpeg', '/fotos/foto09banheiro inferior.jpeg'],
-    price: 'Consulte disponibilidade'
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
+    airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto02',
+    calendarUrl: 'https://ical.booking.com/v1/export/t/6088b75e-dfef-424c-a2da-87532f072500.ics'
   },
   {
-    id: 'quarto-familia',
-    name: 'Quarto Família',
-    description: 'Ideal para família: cama de casal + solteiro com ventilador de teto e acesso à sacada.',
+    id: 'quarto-03',
+    name: 'Quarto 03',
+    description: 'Quarto triplo ideal para família ou amigos.',
     isSuite: false,
-    features: ['Cama de Casal + Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
+    features: ['3 Camas', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
     imageUrl: '/fotos/foto04Quarto 3.jpeg',
     images: ['/fotos/foto04Quarto 3.jpeg', '/fotos/foto06sala de tv.jpeg'],
-    price: 'Consulte disponibilidade'
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
+    airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto03',
+    calendarUrl: 'https://ical.booking.com/v1/export/t/d1e4f8de-3767-4266-aa37-d09b88aaafd2.ics'
   },
   {
-    id: 'quarto-duplo',
-    name: 'Quarto com Duas Camas',
-    description: 'Quarto com duas camas de solteiro, ótimo para amigos ou crianças.',
+    id: 'quarto-04',
+    name: 'Quarto 04',
+    description: 'Quarto triplo com ventilador de teto e acesso à sacada.',
     isSuite: false,
-    features: ['2 Camas de Solteiro', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
+    features: ['3 Camas', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
     imageUrl: '/fotos/foto05Quarto 5.jpeg',
     images: ['/fotos/foto05Quarto 5.jpeg', '/fotos/foto10banheiro superior.jpeg'],
-    price: 'Consulte disponibilidade'
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul1.html',
+    airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto04',
+    calendarUrl: 'https://ical.booking.com/v1/export?t=ad77d862-1714-4393-96ae-13631b97b4cb'
   },
   {
-    id: 'quarto-casal',
-    name: 'Quarto Casal',
-    description: 'Quarto aconchegante com cama de casal, perfeito para casais.',
+    id: 'quarto-05',
+    name: 'Quarto 05',
+    description: 'Quarto triplo simples e confortável.',
     isSuite: false,
-    features: ['Cama de Casal', 'Ventilador de Teto', 'Janela Ampla', 'Wi-Fi'],
+    features: ['3 Camas', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
     imageUrl: '/fotos/foto04Quarto 3.jpeg',
     images: ['/fotos/foto04Quarto 3.jpeg'],
-    price: 'Consulte disponibilidade'
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
+    airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto05',
+    calendarUrl: 'https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics'
   },
   {
-    id: 'quarto-standard',
-    name: 'Quarto Standard',
-    description: 'Quarto simples e confortável com cama de solteiro.',
+    id: 'casa-inteira',
+    name: 'Casa Inteira',
+    description: 'Toda a casa para você e sua família ou grupo.',
     isSuite: false,
-    features: ['Cama de Solteiro', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
-    imageUrl: '/fotos/foto05Quarto 5.jpeg',
-    images: ['/fotos/foto05Quarto 5.jpeg'],
-    price: 'Consulte disponibilidade'
+    features: ['5 Quartos', '6 Camas', '3 Banheiros', 'Área Gourmet', 'Garagem Coberta'],
+    imageUrl: '/fotos/foto01sala estar.jpeg',
+    images: ['/fotos/foto01sala estar.jpeg'],
+    price: 'Consulte disponibilidade',
+    bookingUrl: 'http://www.booking.com/hotel/br/casa-de-praia-ubatuba-e-enseada-300m-da-praia.html',
+    airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
+    calendarUrl: 'https://ical.booking.com/v1/export/t/c9bdd689-d2ce-4a8a-a390-11867aa6b349.ics'
   }
 ];
