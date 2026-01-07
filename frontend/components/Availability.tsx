@@ -70,13 +70,14 @@ const Availability: React.FC = () => {
             const endDate = event.endDate.toJSDate();
 
             // Mark all dates in the range as booked
-            let currentDate = new Date(startDate);
+            const currentDate = new Date(startDate);
             while (currentDate <= endDate) {
               const dateStr = currentDate.toISOString().split('T')[0];
               if (availability[dateStr] !== undefined) {
                 availability[dateStr] = false;
               }
-              currentDate.setDate(currentDate.getDate() + 1);
+              // Create a new date object to avoid setDate() issues across months
+              currentDate.setTime(currentDate.getTime() + 24 * 60 * 60 * 1000);
             }
           });
 
