@@ -113,6 +113,13 @@ const Rooms: React.FC = () => {
                 <div className="mb-6 p-4 bg-villa-gold/10 rounded-xl border-2 border-villa-gold/30">
                   <p className="text-sm text-slate-600 mb-1">Valor</p>
                   <p className="text-2xl font-bold text-villa-deep">{selectedRoom.price}</p>
+                  <a 
+                    href="#disponibilidade" 
+                    className="text-sm text-villa-sea hover:text-villa-deep font-semibold underline mt-2 inline-block"
+                    aria-label="Ver tabela de disponibilidade completa de todos os quartos"
+                  >
+                    Ver disponibilidade completa
+                  </a>
                 </div>
               )}
 
@@ -192,7 +199,17 @@ const Rooms: React.FC = () => {
                   <h4 className="text-xl font-bold text-villa-deep mb-2">{room.name}</h4>
                   <p className="text-slate-500 text-sm mb-4 leading-relaxed">{room.description}</p>
                   {room.price && (
-                    <p className="text-villa-deep font-semibold text-sm">{room.price}</p>
+                    <>
+                      <p className="text-villa-deep font-semibold text-sm">{room.price}</p>
+                      <a 
+                        href="#disponibilidade" 
+                        className="text-xs text-villa-sea hover:text-villa-deep font-semibold underline mt-1 inline-block"
+                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`Ver disponibilidade para ${room.name}`}
+                      >
+                        Ver disponibilidade
+                      </a>
+                    </>
                   )}
                 </div>
               </div>

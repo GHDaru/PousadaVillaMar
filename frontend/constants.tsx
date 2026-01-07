@@ -79,20 +79,20 @@ export const ROOMS: Room[] = [
     features: ['3 Camas', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
     imageUrl: '/fotos/foto05Quarto 5.jpeg',
     images: ['/fotos/foto05Quarto 5.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto01',
     calendarUrl: 'https://ical.booking.com/v1/export/t/5d7051ab-b226-4e57-8042-a2a95cbc8173.ics'
   },
   {
     id: 'quarto-02',
-    name: 'Quarto 02',
+    name: 'Suíte',
     description: 'Suíte privativa com ventilador e boa ventilação.',
     isSuite: true,
     features: ['Ventilador de Teto', 'Janela Ampla', 'Wi-Fi de Alta Velocidade', 'Banheiro Privativo'],
     imageUrl: '/fotos/foto07suite.jpeg',
     images: ['/fotos/foto07suite.jpeg', '/fotos/foto09banheiro inferior.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 400 (semana) | R$ 500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto02',
     calendarUrl: 'https://ical.booking.com/v1/export/t/6088b75e-dfef-424c-a2da-87532f072500.ics'
@@ -105,7 +105,7 @@ export const ROOMS: Room[] = [
     features: ['3 Camas', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
     imageUrl: '/fotos/foto04Quarto 3.jpeg',
     images: ['/fotos/foto04Quarto 3.jpeg', '/fotos/foto06sala de tv.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto03',
     calendarUrl: 'https://ical.booking.com/v1/export/t/d1e4f8de-3767-4266-aa37-d09b88aaafd2.ics'
@@ -118,7 +118,7 @@ export const ROOMS: Room[] = [
     features: ['3 Camas', 'Ventilador de Teto', 'Acesso à Sacada', 'Wi-Fi'],
     imageUrl: '/fotos/foto05Quarto 5.jpeg',
     images: ['/fotos/foto05Quarto 5.jpeg', '/fotos/foto10banheiro superior.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul1.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto04',
     calendarUrl: 'https://ical.booking.com/v1/export?t=ad77d862-1714-4393-96ae-13631b97b4cb'
@@ -131,7 +131,7 @@ export const ROOMS: Room[] = [
     features: ['3 Camas', 'Ventilador de Teto', 'Wi-Fi de Alta Velocidade'],
     imageUrl: '/fotos/foto04Quarto 3.jpeg',
     images: ['/fotos/foto04Quarto 3.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto05',
     calendarUrl: 'https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics'
@@ -144,7 +144,7 @@ export const ROOMS: Room[] = [
     features: ['5 Quartos', '6 Camas', '3 Banheiros', 'Área Gourmet', 'Garagem Coberta', 'Ideal para Eventos'],
     imageUrl: '/fotos/foto01sala estar.jpeg',
     images: ['/fotos/foto01sala estar.jpeg'],
-    price: 'Consulte disponibilidade',
+    price: 'R$ 1.200 (semana) | R$ 1.500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/casa-de-praia-ubatuba-e-enseada-300m-da-praia.html',
     airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
     calendarUrl: 'https://ical.booking.com/v1/export/t/c9bdd689-d2ce-4a8a-a390-11867aa6b349.ics'

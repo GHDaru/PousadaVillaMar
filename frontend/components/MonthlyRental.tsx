@@ -41,7 +41,7 @@ const MonthlyRental: React.FC = () => {
                       <Calendar className="text-villa-sea" size={24} />
                       <span className="text-sm font-bold text-villa-deep uppercase tracking-wide">Disponível</span>
                     </div>
-                    <p className="text-2xl font-bold text-villa-deep">Fevereiro a Novembro</p>
+                    <p className="text-2xl font-bold text-villa-deep">Março a Novembro</p>
                   </div>
                 </div>
               </div>
@@ -240,7 +240,7 @@ const MonthlyRental: React.FC = () => {
                 <Calendar className="text-villa-deep" size={32} />
               </div>
               <h4 className="font-bold text-villa-deep mb-2">Flexibilidade</h4>
-              <p className="text-sm text-slate-600">Disponível de fevereiro a novembro - escolha seu período</p>
+              <p className="text-sm text-slate-600">Disponível de março a novembro - escolha seu período</p>
             </div>
           </div>
         </div>
