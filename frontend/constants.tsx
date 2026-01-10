@@ -95,7 +95,7 @@ export const ROOMS: Room[] = [
     price: 'R$ 400 (semana) | R$ 500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto02',
-    calendarUrl: 'https://ical.booking.com/v1/export/t/6088b75e-dfef-424c-a2da-87532f072500.ics'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577496625832142262.ics?t=b7bca0b4b48e46d690d0c35ca9eb1863'
   },
   {
     id: 'quarto-03',
