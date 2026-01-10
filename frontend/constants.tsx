@@ -147,6 +147,6 @@ export const ROOMS: Room[] = [
     price: 'R$ 1.200 (semana) | R$ 1.500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/casa-de-praia-ubatuba-e-enseada-300m-da-praia.html',
     airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
-    calendarUrl: 'https://ical.booking.com/v1/export/t/c9bdd689-d2ce-4a8a-a390-11867aa6b349.ics'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1574971972320007707.ics?t=b1598b7d86534da2b819293cdd1456f9'
   }
 ];
