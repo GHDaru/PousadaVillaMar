@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ROOMS } from '../constants';
 import { Calendar } from 'lucide-react';
 import { getRoomPrice, isWeekend, isSpecialDate } from '../pricing';
+import CalendarAuditModal from './CalendarAuditModal';
 // @ts-ignore
 import ICAL from 'ical.js';
 
@@ -16,6 +17,8 @@ const Availability: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [dates, setDates] = useState<string[]>([]);
+  const [showAuditModal, setShowAuditModal] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState<{ id: string; name: string } | null>(null);
 
   useEffect(() => {
     fetchAvailability();
@@ -118,6 +121,11 @@ const Availability: React.FC = () => {
     return days[date.getDay()];
   };
 
+  const handleAuditClick = (roomId: string, roomName: string) => {
+    setSelectedRoom({ id: roomId, name: roomName });
+    setShowAuditModal(true);
+  };
+
   if (loading) {
     return (
       <section id="disponibilidade" className="py-24 bg-villa-shell">
@@ -202,7 +210,17 @@ const Availability: React.FC = () => {
                   <tr key={room.roomId} className={idx % 2 === 0 ? 'bg-white' : 'bg-villa-shell/30'}>
                     <td className="sticky left-0 z-10 px-4 py-4 font-semibold text-villa-deep border-r-2 border-villa-shell" 
                         style={{ backgroundColor: idx % 2 === 0 ? 'white' : 'rgba(243, 244, 246, 0.3)' }}>
-                      {room.roomName}
+                      <div className="flex items-center justify-between">
+                        <span>{room.roomName}</span>
+                        <button
+                          onClick={() => handleAuditClick(room.roomId, room.roomName)}
+                          className="opacity-0 hover:opacity-100 focus:opacity-100 transition-opacity ml-2 p-1 hover:bg-villa-sea/10 rounded"
+                          title="Auditar calendário"
+                          aria-label="Auditar calendário"
+                        >
+                          <Calendar size={14} className="text-villa-sea" />
+                        </button>
+                      </div>
                     </td>
                     {dates.map((date) => {
                       const isAvailable = room.availability[date];
@@ -267,6 +285,16 @@ const Availability: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* Audit Modal */}
+      {selectedRoom && (
+        <CalendarAuditModal
+          isOpen={showAuditModal}
+          onClose={() => setShowAuditModal(false)}
+          roomId={selectedRoom.id}
+          roomName={selectedRoom.name}
+        />
+      )}
     </section>
   );
 };
