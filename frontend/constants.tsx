@@ -82,7 +82,8 @@ export const ROOMS: Room[] = [
     price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto01',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577701985478063999.ics?t=597bab833fa347ed9127801a6476e98e'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577701985478063999.ics?t=597bab833fa347ed9127801a6476e98e',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export/t/5d7051ab-b226-4e57-8042-a2a95cbc8173.ics'
   },
   {
     id: 'quarto-02',
@@ -95,7 +96,8 @@ export const ROOMS: Room[] = [
     price: 'R$ 400 (semana) | R$ 500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto02',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577496625832142262.ics?t=b7bca0b4b48e46d690d0c35ca9eb1863'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577496625832142262.ics?t=b7bca0b4b48e46d690d0c35ca9eb1863',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export/t/6088b75e-dfef-424c-a2da-87532f072500.ics'
   },
   {
     id: 'quarto-03',
@@ -108,7 +110,8 @@ export const ROOMS: Room[] = [
     price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto03',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577709261261094364.ics?t=d80783b6954c43bfa9b468ea75ccb62a'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577709261261094364.ics?t=d80783b6954c43bfa9b468ea75ccb62a',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export/t/d1e4f8de-3767-4266-aa37-d09b88aaafd2.ics'
   },
   {
     id: 'quarto-04',
@@ -121,7 +124,8 @@ export const ROOMS: Room[] = [
     price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul1.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto04',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577719684425718870.ics?t=e1a97193262b4f6f8b3f7b71e4c1efb0'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577719684425718870.ics?t=e1a97193262b4f6f8b3f7b71e4c1efb0',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export?t=ad77d862-1714-4393-96ae-13631b97b4cb'
   },
   {
     id: 'quarto-05',
@@ -134,7 +138,8 @@ export const ROOMS: Room[] = [
     price: 'R$ 250 (semana) | R$ 300 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/pousada-villa-amp-mar-sao-francisco-do-sul.html',
     airbnbUrl: 'http://airbnb.com.br/h/pousadavillamarquarto05',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577524765430860187.ics?t=a564442d42254112b1f05ac5fe58d381'
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1577524765430860187.ics?t=a564442d42254112b1f05ac5fe58d381',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics'
   },
   {
     id: 'pousada-festas',
@@ -147,6 +152,7 @@ export const ROOMS: Room[] = [
     price: 'R$ 1.200 (semana) | R$ 1.500 (fim de semana)',
     bookingUrl: 'http://www.booking.com/hotel/br/casa-de-praia-ubatuba-e-enseada-300m-da-praia.html',
     airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
-    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1574971972320007707.ics?t=b1598b7d86534da2b819293cdd1456f9' 
+    calendarUrl: 'https://www.airbnb.com.br/calendar/ical/1574971972320007707.ics?t=b1598b7d86534da2b819293cdd1456f9',
+    bookingCalendarUrl: 'https://ical.booking.com/v1/export/t/c9bdd689-d2ce-4a8a-a390-11867aa6b349.ics'
   }
 ];

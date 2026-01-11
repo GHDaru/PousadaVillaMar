@@ -40,50 +40,57 @@ const Availability: React.FC = () => {
       setDates(next30Days);
 
       // Fetch availability for each room with calendar URL
-      const roomsWithCalendars = ROOMS.filter(room => room.calendarUrl);
+      const roomsWithCalendars = ROOMS.filter(room => room.calendarUrl || room.bookingCalendarUrl);
       const availabilityPromises = roomsWithCalendars.map(async (room) => {
         try {
-          // Use a CORS proxy for fetching iCal data
-          const proxyUrl = 'https://corsproxy.io/?';
-          const response = await fetch(proxyUrl + encodeURIComponent(room.calendarUrl!));
-          
-          if (!response.ok) {
-            console.warn(`Failed to fetch calendar for ${room.name}`);
-            return {
-              roomId: room.id,
-              roomName: room.name,
-              availability: Object.fromEntries(next30Days.map(date => [date, true]))
-            };
-          }
-
-          const icalData = await response.text();
-          const jcalData = ICAL.parse(icalData);
-          const comp = new ICAL.Component(jcalData);
-          const vevents = comp.getAllSubcomponents('vevent');
-
           // Initialize all dates as available
           const availability: { [date: string]: boolean } = {};
           next30Days.forEach(date => {
             availability[date] = true;
           });
 
-          // Mark booked dates
-          vevents.forEach((vevent: any) => {
-            const event = new ICAL.Event(vevent);
-            const startDate = event.startDate.toJSDate();
-            const endDate = event.endDate.toJSDate();
+          const proxyUrl = 'https://corsproxy.io/?';
+          const calendarUrls = [
+            room.calendarUrl,
+            room.bookingCalendarUrl
+          ].filter(Boolean) as string[];
 
-            // Mark all dates in the range as booked
-            const currentDate = new Date(startDate);
-            while (currentDate <= endDate) {
-              const dateStr = currentDate.toISOString().split('T')[0];
-              if (availability[dateStr] !== undefined) {
-                availability[dateStr] = false;
+          // Fetch all calendars for this room
+          for (const calendarUrl of calendarUrls) {
+            try {
+              const response = await fetch(proxyUrl + encodeURIComponent(calendarUrl));
+              
+              if (!response.ok) {
+                console.warn(`Failed to fetch calendar for ${room.name} from ${calendarUrl}`);
+                continue;
               }
-              // Create a new date object to avoid setDate() issues across months
-              currentDate.setTime(currentDate.getTime() + 24 * 60 * 60 * 1000);
+
+              const icalData = await response.text();
+              const jcalData = ICAL.parse(icalData);
+              const comp = new ICAL.Component(jcalData);
+              const vevents = comp.getAllSubcomponents('vevent');
+
+              // Mark booked dates from this calendar
+              vevents.forEach((vevent: any) => {
+                const event = new ICAL.Event(vevent);
+                const startDate = event.startDate.toJSDate();
+                const endDate = event.endDate.toJSDate();
+
+                // Mark all dates in the range as booked
+                const currentDate = new Date(startDate);
+                while (currentDate <= endDate) {
+                  const dateStr = currentDate.toISOString().split('T')[0];
+                  if (availability[dateStr] !== undefined) {
+                    availability[dateStr] = false;
+                  }
+                  // Create a new date object to avoid setDate() issues across months
+                  currentDate.setTime(currentDate.getTime() + 24 * 60 * 60 * 1000);
+                }
+              });
+            } catch (err) {
+              console.error(`Error fetching calendar for ${room.name} from ${calendarUrl}:`, err);
             }
-          });
+          }
 
           return {
             roomId: room.id,
@@ -281,7 +288,7 @@ const Availability: React.FC = () => {
 
         <div className="text-center mt-8">
           <p className="text-slate-500 text-sm">
-            A disponibilidade é atualizada em tempo real a partir dos calendários do Booking.com
+            A disponibilidade é atualizada em tempo real a partir dos calendários do Airbnb e Booking.com
           </p>
         </div>
       </div>
