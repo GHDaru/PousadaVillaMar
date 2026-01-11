@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, RefreshCw, Calendar, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 interface SourceData {
   source_name: string;
@@ -58,7 +59,7 @@ const CalendarAuditModal: React.FC<CalendarAuditModalProps> = ({ isOpen, onClose
       };
       
       const unitId = unitIdMap[roomId] || roomId;
-      const response = await fetch(`http://localhost:8000/api/units/${unitId}/audit`);
+      const response = await fetch(`${API_BASE_URL}/api/units/${unitId}/audit`);
       
       if (!response.ok) {
         throw new Error(`Erro ao buscar dados de auditoria: ${response.status}`);
