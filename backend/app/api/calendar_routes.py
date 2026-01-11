@@ -4,7 +4,6 @@ from fastapi import APIRouter, HTTPException, Query, Depends
 from app.models.schemas import CalendarResponse, SourceStatus
 from app.repos.units_repo import UnitsRepository
 from app.repos.blocks_repo import BlocksRepository
-from app.repos.cache_repo import CacheRepository
 from app.services.ical_fetcher import ICSFetcher
 from app.services.ical_parser import ICSParser, BlockedRange
 from app.services.calendar_merge import CalendarMerge
@@ -17,7 +16,6 @@ router = APIRouter()
 # Initialize dependencies
 units_repo = UnitsRepository()
 blocks_repo = BlocksRepository()
-cache_repo = CacheRepository()
 ics_fetcher = ICSFetcher(timeout=5.0)
 ics_parser = ICSParser()
 pricing_provider = RulesV1PricingProvider()
@@ -44,7 +42,7 @@ async def get_calendar(
     This endpoint fetches ICS calendars from Airbnb and Booking.com,
     merges them with manual blocks, and returns availability by day.
     
-    Results are cached for 10 minutes to reduce external API calls.
+    Data is fetched fresh on every request (no caching).
     """
     # Parse dates
     start_date = parse_date(start)
@@ -58,19 +56,8 @@ async def get_calendar(
     if not unit:
         raise HTTPException(status_code=404, detail=f"Unit not found: {unit_id}")
     
-    # Try to get from cache
-    cache_key = f"calendar:{unit_id}"
-    cached_data = cache_repo.get(cache_key)
-    
-    if cached_data:
-        # Return cached data, but filter to requested range
-        return _filter_calendar_to_range(cached_data, start_date, end_date)
-    
-    # Fetch and parse calendars
+    # Fetch and parse calendars (no caching - always fetch fresh data)
     calendar_data = await _fetch_and_build_calendar(unit, start_date, end_date)
-    
-    # Cache for 10 minutes
-    cache_repo.set(cache_key, calendar_data, ttl_seconds=600)
     
     return calendar_data
 
@@ -131,18 +118,3 @@ async def _fetch_and_build_calendar(unit, start_date: date, end_date: date) -> C
     )
     
     return calendar_response
-
-
-def _filter_calendar_to_range(calendar_data: CalendarResponse, start_date: date, end_date: date) -> CalendarResponse:
-    """Filter cached calendar data to requested date range"""
-    filtered_days = [
-        day for day in calendar_data.days
-        if start_date <= day.date <= end_date
-    ]
-    
-    # Update the range in the response
-    calendar_data.range.start = start_date
-    calendar_data.range.end = end_date
-    calendar_data.days = filtered_days
-    
-    return calendar_data
