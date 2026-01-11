@@ -18,6 +18,7 @@ UNITS_DB: Dict[str, Unit] = {
         name="Quarto Família (Quarto 04)",
         timezone="America/Sao_Paulo",
         airbnb_ics_url=None,  # To be configured
+        # Note: This URL uses /export?t= format (query param) instead of /export/t/ - both formats are valid
         booking_ics_url="https://ical.booking.com/v1/export?t=ad77d862-1714-4393-96ae-13631b97b4cb",
         currency="BRL"
     ),
