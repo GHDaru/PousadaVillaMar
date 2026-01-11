@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, RefreshCw, Calendar, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 import { ROOMS } from '../constants';
+import { CORS_PROXY_URL } from '../config';
 // @ts-ignore
 import ICAL from 'ical.js';
 
@@ -62,8 +63,7 @@ const CalendarAuditModal: React.FC<CalendarAuditModalProps> = ({ isOpen, onClose
       // Fetch Airbnb calendar if available
       if (room.calendarUrl) {
         try {
-          const proxyUrl = 'https://corsproxy.io/?';
-          const response = await fetch(proxyUrl + encodeURIComponent(room.calendarUrl));
+          const response = await fetch(CORS_PROXY_URL + encodeURIComponent(room.calendarUrl));
           
           if (response.ok) {
             const icalData = await response.text();
@@ -116,8 +116,7 @@ const CalendarAuditModal: React.FC<CalendarAuditModalProps> = ({ isOpen, onClose
       // Fetch Booking.com calendar if available
       if (room.bookingCalendarUrl) {
         try {
-          const proxyUrl = 'https://corsproxy.io/?';
-          const response = await fetch(proxyUrl + encodeURIComponent(room.bookingCalendarUrl));
+          const response = await fetch(CORS_PROXY_URL + encodeURIComponent(room.bookingCalendarUrl));
           
           if (response.ok) {
             const icalData = await response.text();

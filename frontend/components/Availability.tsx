@@ -3,6 +3,7 @@ import { ROOMS } from '../constants';
 import { Calendar } from 'lucide-react';
 import { getRoomPrice, isWeekend, isSpecialDate } from '../pricing';
 import CalendarAuditModal from './CalendarAuditModal';
+import { CORS_PROXY_URL } from '../config';
 // @ts-ignore
 import ICAL from 'ical.js';
 
@@ -49,7 +50,6 @@ const Availability: React.FC = () => {
             availability[date] = true;
           });
 
-          const proxyUrl = 'https://corsproxy.io/?';
           const calendarUrls = [
             room.calendarUrl,
             room.bookingCalendarUrl
@@ -58,7 +58,7 @@ const Availability: React.FC = () => {
           // Fetch all calendars for this room
           for (const calendarUrl of calendarUrls) {
             try {
-              const response = await fetch(proxyUrl + encodeURIComponent(calendarUrl));
+              const response = await fetch(CORS_PROXY_URL + encodeURIComponent(calendarUrl));
               
               if (!response.ok) {
                 console.warn(`Failed to fetch calendar for ${room.name} from ${calendarUrl}`);
