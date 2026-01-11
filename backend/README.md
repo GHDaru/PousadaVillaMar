@@ -6,7 +6,7 @@ Calendar availability API for managing room bookings from multiple sources (Airb
 
 - **Multi-source calendar aggregation**: Fetches and merges calendars from Airbnb and Booking.com ICS feeds
 - **Manual blocking**: Add manual blocks for maintenance or personal use
-- **Smart caching**: 10-minute TTL cache to minimize external API calls
+- **Real-time updates**: Calendar data is fetched fresh on every page load (no caching)
 - **Parallel fetching**: Fetches multiple ICS sources in parallel for fast responses
 - **Graceful degradation**: Returns partial data if one source fails
 - **Admin endpoints**: Force sync calendar data with protected endpoints
@@ -132,14 +132,14 @@ Units are configured in `app/repos/units_repo.py`. Each unit has:
 - `booking_ics_url`: Booking.com calendar ICS URL (optional)
 - `currency`: Currency code (default: "BRL")
 
-To add ICS URLs for a unit, edit the `UNITS_DB` dictionary in `units_repo.py`:
+All units now have Booking.com ICS URLs pre-configured:
 
 ```python
 "suite-premium": Unit(
     id="suite-premium",
-    name="Suíte Premium",
-    airbnb_ics_url="https://www.airbnb.com/calendar/ical/...",
-    booking_ics_url="https://ical.booking.com/v1/export/t/...",
+    name="Suíte Premium (Quarto 05)",
+    airbnb_ics_url=None,  # To be configured
+    booking_ics_url="https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics",
 )
 ```
 
@@ -200,10 +200,10 @@ Then update `calendar_routes.py` to use your provider.
 - Default timeout is 5 seconds
 - Adjust in `calendar_routes.py`: `ICSFetcher(timeout=10.0)`
 
-### Cache Not Working
-- Cache uses in-memory storage
-- In serverless environments (Vercel), each request may start fresh
-- Consider using Redis (Upstash) for persistent cache
+### No Caching
+- Calendar data is fetched fresh on every request
+- This ensures always up-to-date availability information
+- For high-traffic scenarios, consider re-adding cache with shorter TTL
 
 ### CORS Issues
 - Update allowed origins in `app/main.py`

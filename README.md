@@ -47,7 +47,7 @@ FastAPI calendar API for managing room availability:
 
 ### Backend API
 - **Multi-source Integration**: Automatically fetches and merges calendars from Airbnb and Booking.com
-- **Smart Caching**: 10-minute cache reduces API calls while keeping data fresh
+- **Real-time Updates**: No caching - calendar data is fetched fresh on every page load
 - **Manual Blocks**: Create custom unavailability periods for maintenance or personal use
 - **Admin Controls**: Force sync with protected endpoints
 - **Graceful Degradation**: Returns partial data if sources fail
@@ -116,11 +116,13 @@ Interactive API docs: `http://localhost:8000/docs`
 
 ## 🏠 Pre-configured Units
 
-- `suite-premium` - Suíte Premium
-- `quarto-familia` - Quarto Família  
-- `quarto-duplo` - Quarto com Duas Camas
-- `quarto-casal` - Quarto Casal
-- `quarto-standard` - Quarto Standard
+All units now have Booking.com ICS URLs configured:
+
+- `suite-premium` - Suíte Premium (Quarto 05)
+- `quarto-familia` - Quarto Família (Quarto 04)
+- `quarto-duplo` - Quarto com Duas Camas (Quarto 03)
+- `quarto-casal` - Quarto Casal (Quarto 02)
+- `quarto-standard` - Quarto Standard (Quarto 01)
 - `casa-completa` - Casa Completa
 
 ## 🔐 Configuration
@@ -132,9 +134,9 @@ Edit `backend/app/repos/units_repo.py`:
 ```python
 "suite-premium": Unit(
     id="suite-premium",
-    name="Suíte Premium",
+    name="Suíte Premium (Quarto 05)",
     airbnb_ics_url="https://www.airbnb.com/calendar/ical/...",
-    booking_ics_url="https://ical.booking.com/v1/export/t/...",
+    booking_ics_url="https://ical.booking.com/v1/export/t/b84506ba-e419-4889-9954-ee8ef44d81fc.ics",
     currency="BRL"
 )
 ```
