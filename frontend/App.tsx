@@ -7,6 +7,7 @@ import Rooms from './components/Rooms';
 import PricingTable from './components/PricingTable';
 import Availability from './components/Availability';
 import MonthlyRental from './components/MonthlyRental';
+import Tourism from './components/Tourism';
 import Gallery from './components/Gallery';
 import Amenities from './components/Amenities';
 import Location from './components/Location';
@@ -23,6 +24,7 @@ function App() {
         <PricingTable />
         <Availability />
         <MonthlyRental />
+        <Tourism />
         <Gallery />
         <Amenities />
         <Location />
