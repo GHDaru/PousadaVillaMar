@@ -4,3 +4,6 @@
 
 // @ts-ignore - Vite env vars
 export const API_BASE_URL = (typeof window !== 'undefined' && (window as any).VITE_API_BASE_URL) || 'http://localhost:8000';
+
+// CORS proxy for fetching ICS files
+export const CORS_PROXY_URL = 'https://corsproxy.io/?';

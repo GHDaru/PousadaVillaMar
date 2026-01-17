@@ -14,6 +14,7 @@ export interface Room {
   bookingUrl?: string;
   airbnbUrl?: string;
   calendarUrl?: string;
+  bookingCalendarUrl?: string;
 }
 
 export interface Amenity {

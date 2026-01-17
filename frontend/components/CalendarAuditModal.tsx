@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { X, RefreshCw, Calendar, AlertCircle, CheckCircle, Clock } from 'lucide-react';
-import { API_BASE_URL } from '../config';
+import { ROOMS } from '../constants';
+import { CORS_PROXY_URL } from '../config';
+// @ts-ignore
+import ICAL from 'ical.js';
 
 interface SourceData {
   source_name: string;
@@ -48,30 +51,135 @@ const CalendarAuditModal: React.FC<CalendarAuditModalProps> = ({ isOpen, onClose
     setError(null);
     
     try {
-      // Map frontend room IDs to backend unit IDs
-      const unitIdMap: Record<string, string> = {
-        'quarto-01': 'quarto-standard',
-        'quarto-02': 'quarto-casal',
-        'quarto-03': 'quarto-duplo',
-        'quarto-04': 'quarto-familia',
-        'quarto-05': 'suite-premium',
-        'pousada-festas': 'casa-completa',
-      };
-      
-      const unitId = unitIdMap[roomId] || roomId;
-      const response = await fetch(`${API_BASE_URL}/api/units/${unitId}/audit`);
-      
-      if (!response.ok) {
-        throw new Error(`Erro ao buscar dados de auditoria: ${response.status}`);
+      // Find the room by ID
+      const room = ROOMS.find(r => r.id === roomId);
+      if (!room) {
+        throw new Error('Quarto não encontrado');
       }
-      
-      const data = await response.json();
+
+      const fetchedAt = new Date().toISOString();
+      const sources: Record<string, SourceData> = {};
+
+      // Fetch Airbnb calendar if available
+      if (room.calendarUrl) {
+        try {
+          const response = await fetch(CORS_PROXY_URL + encodeURIComponent(room.calendarUrl));
+          
+          if (response.ok) {
+            const icalData = await response.text();
+            const jcalData = ICAL.parse(icalData);
+            const comp = new ICAL.Component(jcalData);
+            const vevents = comp.getAllSubcomponents('vevent');
+
+            const parsedEvents = vevents.map((vevent: any) => {
+              const event = new ICAL.Event(vevent);
+              return {
+                start: event.startDate.toJSDate().toISOString().split('T')[0],
+                end: event.endDate.toJSDate().toISOString().split('T')[0],
+                source: 'airbnb'
+              };
+            });
+
+            sources.airbnb = {
+              source_name: 'airbnb',
+              url: room.calendarUrl,
+              raw_ics: icalData,
+              error: null,
+              fetched_at: fetchedAt,
+              events_count: parsedEvents.length,
+              parsed_events: parsedEvents
+            };
+          } else {
+            sources.airbnb = {
+              source_name: 'airbnb',
+              url: room.calendarUrl,
+              raw_ics: null,
+              error: `Erro ao buscar calendário: ${response.status}`,
+              fetched_at: fetchedAt,
+              events_count: null,
+              parsed_events: null
+            };
+          }
+        } catch (err) {
+          sources.airbnb = {
+            source_name: 'airbnb',
+            url: room.calendarUrl,
+            raw_ics: null,
+            error: err instanceof Error ? err.message : 'Erro desconhecido',
+            fetched_at: fetchedAt,
+            events_count: null,
+            parsed_events: null
+          };
+        }
+      }
+
+      // Fetch Booking.com calendar if available
+      if (room.bookingCalendarUrl) {
+        try {
+          const response = await fetch(CORS_PROXY_URL + encodeURIComponent(room.bookingCalendarUrl));
+          
+          if (response.ok) {
+            const icalData = await response.text();
+            const jcalData = ICAL.parse(icalData);
+            const comp = new ICAL.Component(jcalData);
+            const vevents = comp.getAllSubcomponents('vevent');
+
+            const parsedEvents = vevents.map((vevent: any) => {
+              const event = new ICAL.Event(vevent);
+              return {
+                start: event.startDate.toJSDate().toISOString().split('T')[0],
+                end: event.endDate.toJSDate().toISOString().split('T')[0],
+                source: 'booking'
+              };
+            });
+
+            sources.booking = {
+              source_name: 'booking',
+              url: room.bookingCalendarUrl,
+              raw_ics: icalData,
+              error: null,
+              fetched_at: fetchedAt,
+              events_count: parsedEvents.length,
+              parsed_events: parsedEvents
+            };
+          } else {
+            sources.booking = {
+              source_name: 'booking',
+              url: room.bookingCalendarUrl,
+              raw_ics: null,
+              error: `Erro ao buscar calendário: ${response.status}`,
+              fetched_at: fetchedAt,
+              events_count: null,
+              parsed_events: null
+            };
+          }
+        } catch (err) {
+          sources.booking = {
+            source_name: 'booking',
+            url: room.bookingCalendarUrl,
+            raw_ics: null,
+            error: err instanceof Error ? err.message : 'Erro desconhecido',
+            fetched_at: fetchedAt,
+            events_count: null,
+            parsed_events: null
+          };
+        }
+      }
+
+      // Create audit data
+      const data: AuditData = {
+        unit_id: roomId,
+        unit_name: roomName,
+        sources: sources,
+        fetched_at: fetchedAt
+      };
+
       setAuditData(data);
       
       // Set first available source as selected
-      const sources = Object.keys(data.sources);
-      if (sources.length > 0) {
-        setSelectedSource(sources[0]);
+      const sourceKeys = Object.keys(sources);
+      if (sourceKeys.length > 0) {
+        setSelectedSource(sourceKeys[0]);
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro desconhecido');
