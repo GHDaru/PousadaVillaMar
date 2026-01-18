@@ -1,36 +1,23 @@
 
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Rooms from './components/Rooms';
-import PricingTable from './components/PricingTable';
-import Availability from './components/Availability';
-import MonthlyRental from './components/MonthlyRental';
-import Tourism from './components/Tourism';
-import Gallery from './components/Gallery';
-import Amenities from './components/Amenities';
-import Location from './components/Location';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import TourismPage from './pages/TourismPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Rooms />
-        <PricingTable />
-        <Availability />
-        <MonthlyRental />
-        <Tourism />
-        <Gallery />
-        <Amenities />
-        <Location />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/turismo" element={<TourismPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
