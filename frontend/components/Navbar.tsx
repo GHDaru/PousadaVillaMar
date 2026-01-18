@@ -5,6 +5,12 @@ import Logo from './Logo';
 import { Menu, X, Phone } from 'lucide-react';
 import { BRAND } from '../constants';
 
+interface NavLink {
+  name: string;
+  href: string;
+  badge?: boolean;
+}
+
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -17,17 +23,71 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Início', href: '#inicio', isHash: true },
-    { name: 'A Pousada', href: '#sobre', isHash: true },
-    { name: 'Acomodações', href: '#quartos', isHash: true },
-    { name: 'Preços', href: '#precos', isHash: true },
-    { name: 'Disponibilidade', href: '#disponibilidade', badge: true, isHash: true },
-    { name: 'Aluguel Mensal', href: '#aluguel-mensal', isHash: true },
-    { name: 'Turismo na Ilha', href: '/turismo', isHash: false },
-    { name: 'Galeria', href: '#galeria', isHash: true },
-    { name: 'Localização', href: '#localizacao', isHash: true },
+  const navLinks: NavLink[] = [
+    { name: 'Início', href: '#inicio' },
+    { name: 'A Pousada', href: '#sobre' },
+    { name: 'Acomodações', href: '#quartos' },
+    { name: 'Preços', href: '#precos' },
+    { name: 'Disponibilidade', href: '#disponibilidade', badge: true },
+    { name: 'Aluguel Mensal', href: '#aluguel-mensal' },
+    { name: 'Turismo na Ilha', href: '/turismo' },
+    { name: 'Galeria', href: '#galeria' },
+    { name: 'Localização', href: '#localizacao' },
   ];
+
+  const isHashLink = (href: string) => href.startsWith('#');
+
+  const renderNavLink = (link: NavLink, isMobile: boolean = false) => {
+    const baseClassName = isMobile 
+      ? 'relative text-lg font-medium text-slate-700 hover:text-villa-sea'
+      : `relative text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`;
+
+    const badge = link.badge ? (
+      <span className={`absolute -top-2 ${isMobile ? '-right-8' : '-right-2'} bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase`}>
+        Novo
+      </span>
+    ) : null;
+
+    if (isHashLink(link.href)) {
+      if (isHomePage) {
+        return (
+          <a 
+            key={link.name} 
+            href={link.href} 
+            onClick={isMobile ? () => setIsOpen(false) : undefined}
+            className={baseClassName}
+          >
+            {link.name}
+            {badge}
+          </a>
+        );
+      } else {
+        return (
+          <Link 
+            key={link.name} 
+            to={`/${link.href}`}
+            onClick={isMobile ? () => setIsOpen(false) : undefined}
+            className={baseClassName}
+          >
+            {link.name}
+            {badge}
+          </Link>
+        );
+      }
+    } else {
+      return (
+        <Link 
+          key={link.name} 
+          to={link.href}
+          onClick={isMobile ? () => setIsOpen(false) : undefined}
+          className={baseClassName}
+        >
+          {link.name}
+          {badge}
+        </Link>
+      );
+    }
+  };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 shadow-sm py-4'}`}>
@@ -41,48 +101,7 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map(link => (
-            link.isHash && isHomePage ? (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className={`relative text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`}
-              >
-                {link.name}
-                {link.badge && (
-                  <span className="absolute -top-2 -right-2 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                    Novo
-                  </span>
-                )}
-              </a>
-            ) : link.isHash && !isHomePage ? (
-              <Link 
-                key={link.name} 
-                to={`/${link.href}`}
-                className={`relative text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`}
-              >
-                {link.name}
-                {link.badge && (
-                  <span className="absolute -top-2 -right-2 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                    Novo
-                  </span>
-                )}
-              </Link>
-            ) : (
-              <Link 
-                key={link.name} 
-                to={link.href}
-                className={`relative text-sm font-medium tracking-wide hover:text-villa-sea transition-colors ${scrolled ? 'text-slate-700' : 'text-villa-deep'}`}
-              >
-                {link.name}
-                {link.badge && (
-                  <span className="absolute -top-2 -right-2 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                    Novo
-                  </span>
-                )}
-              </Link>
-            )
-          ))}
+          {navLinks.map(link => renderNavLink(link, false))}
           <a 
             href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}`} 
             target="_blank"
@@ -102,51 +121,7 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 absolute w-full top-full left-0 py-6 shadow-xl animate-in fade-in slide-in-from-top-4 duration-300">
           <div className="flex flex-col items-center space-y-6">
-            {navLinks.map(link => (
-              link.isHash && isHomePage ? (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  onClick={() => setIsOpen(false)}
-                  className="relative text-lg font-medium text-slate-700 hover:text-villa-sea"
-                >
-                  {link.name}
-                  {link.badge && (
-                    <span className="absolute -top-2 -right-8 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                      Novo
-                    </span>
-                  )}
-                </a>
-              ) : link.isHash && !isHomePage ? (
-                <Link 
-                  key={link.name} 
-                  to={`/${link.href}`}
-                  onClick={() => setIsOpen(false)}
-                  className="relative text-lg font-medium text-slate-700 hover:text-villa-sea"
-                >
-                  {link.name}
-                  {link.badge && (
-                    <span className="absolute -top-2 -right-8 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                      Novo
-                    </span>
-                  )}
-                </Link>
-              ) : (
-                <Link 
-                  key={link.name} 
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="relative text-lg font-medium text-slate-700 hover:text-villa-sea"
-                >
-                  {link.name}
-                  {link.badge && (
-                    <span className="absolute -top-2 -right-8 bg-villa-gold text-villa-deep text-[9px] font-bold px-1.5 py-0.5 rounded-full uppercase">
-                      Novo
-                    </span>
-                  )}
-                </Link>
-              )
-            ))}
+            {navLinks.map(link => renderNavLink(link, true))}
             <a 
               href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}`} 
               className="bg-villa-deep text-white px-8 py-3 rounded-full text-lg font-semibold flex items-center gap-2"
