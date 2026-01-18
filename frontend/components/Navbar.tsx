@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 shadow-sm py-4'}`}>
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
         <a href="#inicio">
           <Logo 

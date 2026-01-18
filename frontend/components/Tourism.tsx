@@ -240,6 +240,17 @@ const Tourism: React.FC = () => {
           description: 'Quase 3km de extensão. Águas limpas, ondulação moderada, boa para banho e iniciantes no surfe. Larga faixa de areia firme. Infraestrutura com quiosques e posto de salva-vidas. ~16km do centro, menos movimentada que Enseada.',
           mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Praia%20de%20Ubatuba%20S%C3%A3o%20Francisco%20do%20Sul%20SC',
           youtubeUrl: 'https://www.youtube.com/watch?v=dZ5vxIODcns'
+        },
+        {
+          name: 'Praia do Molhe',
+          timeOnSite: '2–3 horas',
+          totalTime: '2h30–4h',
+          effort: 1,
+          accessibility: 'Boa',
+          bestWindow: '9h–12h ou 14h–17h',
+          description: 'Praia urbana com infraestrutura completa e águas calmas. Ideal para famílias e caminhadas à beira-mar. Localizada próxima ao centro histórico, oferece fácil acesso e boas opções de lazer.',
+          mapsUrl: 'https://www.google.com/maps/place/Praia+do+Molhe+(S%C3%A3o+Francisco+do+Sul)/data=!4m2!3m1!1s0x94d9443ffda7c21b:0x5b7ac08899e2faa8?sa=X&ved=1t:155783&ictx=111',
+          youtubeUrl: 'https://www.youtube.com/watch?v=5aA7MB5GLt0'
         }
       ],
       suggestedCombinations: [
