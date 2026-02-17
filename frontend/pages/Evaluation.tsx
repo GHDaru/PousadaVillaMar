@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { Star, MessageSquare, Send, CheckCircle } from 'lucide-react';
 
+// Success message display duration in milliseconds
+const SUCCESS_MESSAGE_DURATION_MS = 3000;
+
 interface EvaluationData {
   overallRating: number;
   cleanlinessRating: number;
@@ -91,7 +94,7 @@ const Evaluation: React.FC = () => {
             comment: '',
           });
           setIsSubmitted(false);
-        }, 3000);
+        }, SUCCESS_MESSAGE_DURATION_MS);
       } else {
         alert('Erro ao enviar avaliação. Tente novamente.');
       }

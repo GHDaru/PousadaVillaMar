@@ -7,6 +7,10 @@ from datetime import datetime
 from typing import List, Dict, Any
 import os
 import json
+import logging
+from threading import Lock
+
+logger = logging.getLogger(__name__)
 
 
 class GoogleSheetsService:
@@ -15,33 +19,39 @@ class GoogleSheetsService:
     def __init__(self):
         """Initialize Google Sheets service."""
         self.client = None
+        self._lock = Lock()
         self.scopes = [
             'https://www.googleapis.com/auth/spreadsheets',
             'https://www.googleapis.com/auth/drive'
         ]
         
     def _get_client(self):
-        """Get authenticated Google Sheets client."""
+        """Get authenticated Google Sheets client (thread-safe)."""
         if self.client:
             return self.client
+        
+        with self._lock:
+            # Double-check after acquiring lock
+            if self.client:
+                return self.client
             
-        # Try to load credentials from environment variable or file
-        creds_json = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
-        
-        if creds_json:
-            # Load from environment variable (for production)
-            creds_dict = json.loads(creds_json)
-            credentials = Credentials.from_service_account_info(creds_dict, scopes=self.scopes)
-        else:
-            # Load from file (for development)
-            creds_file = os.getenv('GOOGLE_SHEETS_CREDENTIALS_FILE', 'credentials.json')
-            if os.path.exists(creds_file):
-                credentials = Credentials.from_service_account_file(creds_file, scopes=self.scopes)
+            # Try to load credentials from environment variable or file
+            creds_json = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
+            
+            if creds_json:
+                # Load from environment variable (for production)
+                creds_dict = json.loads(creds_json)
+                credentials = Credentials.from_service_account_info(creds_dict, scopes=self.scopes)
             else:
-                raise Exception("Google Sheets credentials not found. Set GOOGLE_SHEETS_CREDENTIALS or GOOGLE_SHEETS_CREDENTIALS_FILE environment variable.")
-        
-        self.client = gspread.authorize(credentials)
-        return self.client
+                # Load from file (for development)
+                creds_file = os.getenv('GOOGLE_SHEETS_CREDENTIALS_FILE', 'credentials.json')
+                if os.path.exists(creds_file):
+                    credentials = Credentials.from_service_account_file(creds_file, scopes=self.scopes)
+                else:
+                    raise Exception("Google Sheets credentials not found. Set GOOGLE_SHEETS_CREDENTIALS or GOOGLE_SHEETS_CREDENTIALS_FILE environment variable.")
+            
+            self.client = gspread.authorize(credentials)
+            return self.client
 
     def append_guest_registration(self, guests: List[Dict[str, Any]]) -> bool:
         """
@@ -83,7 +93,7 @@ class GoogleSheetsService:
             return True
             
         except Exception as e:
-            print(f"Error appending guest registration to Google Sheets: {e}")
+            logger.error(f"Error appending guest registration to Google Sheets: {e}")
             return False
 
     def append_evaluation(self, evaluation: Dict[str, Any]) -> bool:
@@ -124,7 +134,7 @@ class GoogleSheetsService:
             return True
             
         except Exception as e:
-            print(f"Error appending evaluation to Google Sheets: {e}")
+            logger.error(f"Error appending evaluation to Google Sheets: {e}")
             return False
 
     def initialize_sheets(self):
@@ -151,7 +161,7 @@ class GoogleSheetsService:
                             'Data de Nascimento'
                         ])
                 except Exception as e:
-                    print(f"Error initializing guests sheet: {e}")
+                    logger.error(f"Error initializing guests sheet: {e}")
             
             # Initialize Evaluations sheet
             eval_id = os.getenv('EVALUATIONS_SPREADSHEET_ID')
@@ -171,12 +181,12 @@ class GoogleSheetsService:
                             'Comentários'
                         ])
                 except Exception as e:
-                    print(f"Error initializing evaluations sheet: {e}")
+                    logger.error(f"Error initializing evaluations sheet: {e}")
                     
             return True
             
         except Exception as e:
-            print(f"Error initializing sheets: {e}")
+            logger.error(f"Error initializing sheets: {e}")
             return False
 
 
