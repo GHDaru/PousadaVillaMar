@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import calendar_routes, blocks_routes, audit_routes
+from app.api import calendar_routes, blocks_routes, audit_routes, guests_routes, evaluations_routes
 
 
 # Create FastAPI app
@@ -28,6 +28,8 @@ app.add_middleware(
 app.include_router(calendar_routes.router, prefix="/api", tags=["calendar"])
 app.include_router(blocks_routes.router, prefix="/api", tags=["blocks"])
 app.include_router(audit_routes.router, prefix="/api", tags=["audit"])
+app.include_router(guests_routes.router, prefix="/api", tags=["guests"])
+app.include_router(evaluations_routes.router, prefix="/api", tags=["evaluations"])
 
 
 @app.get("/")
@@ -41,6 +43,8 @@ async def root():
             "audit": "/api/units/{unit_id}/audit",
             "sync": "/api/units/{unit_id}/sync (POST, requires X-ADMIN-TOKEN)",
             "blocks": "/api/units/{unit_id}/blocks (POST)",
+            "guests": "/api/guests/register (POST)",
+            "evaluations": "/api/evaluations/submit (POST)",
             "docs": "/docs"
         }
     }
