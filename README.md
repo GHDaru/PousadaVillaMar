@@ -59,6 +59,8 @@ FastAPI calendar API for managing room availability:
 - **Gallery**: Photo gallery of the property
 - **Location**: Embedded map and directions
 - **Contact Integration**: Direct WhatsApp and booking links
+- **Guest Registration**: Direct-access form for collecting guest information
+- **Anonymous Evaluation**: Feedback form with star ratings (direct access only)
 
 ## 📚 Documentation
 
@@ -68,6 +70,8 @@ FastAPI calendar API for managing room availability:
 - **[Integration Guide](INTEGRATION_GUIDE.md)** - How to connect frontend to backend
 - **[Deployment Guide](DEPLOYMENT.md)** - Production deployment instructions
 - **[Implementation Summary](IMPLEMENTATION_SUMMARY.md)** - Technical details
+- **[Guest Forms Features](FEATURES_FORMS.md)** - Guest registration and evaluation forms
+- **[Google Sheets Setup](GOOGLE_SHEETS_SETUP.md)** - Setup guide for form data storage
 
 ## 🔧 Technology Stack
 
@@ -77,6 +81,8 @@ FastAPI calendar API for managing room availability:
 - **icalendar** - ICS parsing library
 - **Pydantic** - Data validation
 - **Uvicorn** - ASGI server
+- **gspread** - Google Sheets integration
+- **google-auth** - Google authentication
 
 ### Frontend
 - **React 19** - UI library
@@ -110,6 +116,39 @@ Content-Type: application/json
 ```bash
 POST /api/units/{unit_id}/sync
 X-ADMIN-TOKEN: your-admin-token
+```
+
+### Register Guests
+```bash
+POST /api/guests/register
+Content-Type: application/json
+
+{
+  "guests": [
+    {
+      "name": "John Doe",
+      "phone": "(47) 99999-9999",
+      "origin": "Joinville - SC",
+      "birthDate": "1990-01-01"
+    }
+  ]
+}
+```
+
+### Submit Evaluation
+```bash
+POST /api/evaluations/submit
+Content-Type: application/json
+
+{
+  "overallRating": 5,
+  "cleanlinessRating": 5,
+  "comfortRating": 5,
+  "locationRating": 5,
+  "valueRating": 5,
+  "comment": "Great stay!",
+  "submittedAt": "2024-01-01T00:00:00Z"
+}
 ```
 
 Interactive API docs: `http://localhost:8000/docs`
