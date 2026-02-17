@@ -41,3 +41,11 @@ htmlcov/
 *.egg-info/
 dist/
 build/
+
+# Environment variables and credentials
+.env
+.env.local
+.env.*.local
+credentials.json
+*-credentials.json
+service-account*.json
