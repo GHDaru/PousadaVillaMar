@@ -40,10 +40,10 @@ const Rooms: React.FC = () => {
               <button
                 key={room.id}
                 onClick={() => handleRoomSelect(room)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-semibold transition-colors duration-300 ${
                   selectedRoom.id === room.id
-                    ? 'bg-villa-deep text-white shadow-lg scale-105'
-                    : 'bg-villa-shell text-villa-deep hover:bg-villa-sea hover:text-white'
+                    ? 'bg-villa-deep text-white'
+                    : 'bg-villa-shell text-villa-deep border border-slate-200 hover:border-villa-deep'
                 }`}
               >
                 {room.name}
@@ -53,7 +53,7 @@ const Rooms: React.FC = () => {
         </div>
 
         {/* Selected Room Details with Carousel */}
-        <div className="bg-villa-shell rounded-3xl overflow-hidden shadow-xl mb-16">
+        <div className="bg-villa-shell rounded-3xl overflow-hidden border border-slate-200 mb-16">
           <div className="grid md:grid-cols-2 gap-0">
             {/* Image Carousel */}
             <div className="relative h-96 md:h-auto">
@@ -110,7 +110,7 @@ const Rooms: React.FC = () => {
               
               {/* Price */}
               {selectedRoom.price && (
-                <div className="mb-6 p-4 bg-villa-gold/10 rounded-xl border-2 border-villa-gold/30">
+                <div className="mb-6 p-4 bg-white rounded-xl border border-slate-200">
                   <p className="text-sm text-slate-600 mb-1">Valor</p>
                   <p className="text-2xl font-bold text-villa-deep">{selectedRoom.price}</p>
                   <a 
@@ -139,30 +139,30 @@ const Rooms: React.FC = () => {
                   href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva para ${selectedRoom.name}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-xl font-bold hover:bg-[#128C7E] hover:scale-105 transition-all"
+                  className="flex items-center justify-center gap-3 bg-villa-deep text-white py-4 rounded-full font-bold hover:bg-villa-sea transition-colors"
                 >
                   <MessageCircle size={20} />
                   Reservar pelo WhatsApp
                 </a>
-                
+
                 {/* Booking and Airbnb Links */}
                 <div className="grid grid-cols-2 gap-3">
                   {selectedRoom.bookingUrl && (
-                    <a 
+                    <a
                       href={selectedRoom.bookingUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-villa-sea text-white py-3 rounded-xl font-semibold hover:bg-villa-deep hover:scale-105 transition-all text-sm"
+                      className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
                     >
                       Ver no Booking
                     </a>
                   )}
                   {selectedRoom.airbnbUrl && (
-                    <a 
+                    <a
                       href={selectedRoom.airbnbUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-[#FF5A5F] text-white py-3 rounded-xl font-semibold hover:bg-[#E04E53] hover:scale-105 transition-all text-sm"
+                      className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
                     >
                       Ver no Airbnb
                     </a>
@@ -180,14 +180,14 @@ const Rooms: React.FC = () => {
             {ROOMS.map((room) => (
               <div 
                 key={room.id} 
-                className="group bg-villa-shell rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
                 onClick={() => handleRoomSelect(room)}
               >
                 <div className="relative h-64 overflow-hidden">
                   <img 
                     src={room.imageUrl} 
                     alt={room.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   {room.isSuite && (
                     <span className="absolute top-4 left-4 bg-villa-deep text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
@@ -218,7 +218,7 @@ const Rooms: React.FC = () => {
         </div>
 
         {/* Pousada Inteira para Festas Section */}
-        <div className="bg-villa-deep rounded-[3rem] p-10 md:p-16 text-white">
+        <div className="bg-villa-deep rounded-3xl p-10 md:p-16 text-white">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-2/3">
               <h3 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Pousada Inteira para Festas</h3>
@@ -237,7 +237,7 @@ const Rooms: React.FC = () => {
                   href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva da pousada inteira para uma festa ou evento.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#128C7E] transition-all"
+                  className="flex items-center justify-center gap-3 bg-white text-villa-deep px-8 py-4 rounded-full font-bold hover:bg-villa-sand transition-colors"
                 >
                   <MessageCircle size={20} />
                   Reservar pelo WhatsApp
