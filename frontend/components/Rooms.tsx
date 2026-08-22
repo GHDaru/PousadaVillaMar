@@ -53,6 +53,9 @@ const Rooms: React.FC = () => {
               { src: '/fotos/foto16centro.jpeg', alt: 'Rua de paralelepípedos com casarões coloridos e igreja no Centro Histórico de São Francisco do Sul', caption: 'Centro Histórico' },
               { src: '/fotos/foto17orla.jpeg', alt: 'Orla do Centro Histórico de São Francisco do Sul vista do mar, com casarões e morros verdes', caption: 'Orla do Centro Histórico' },
               { src: '/fotos/foto18costao.jpeg', alt: 'Costão de pedras com o mar azul e a praia da Enseada ao fundo', caption: 'Costão da Enseada' },
+              { src: '/fotos/foto19garca.jpeg', alt: 'Garça branca caminhando no manguezal entre raízes', caption: 'Garça no manguezal' },
+              { src: '/fotos/foto20baia.jpeg', alt: 'Pôr do sol dourado sobre a baía da Babitonga, visto do píer', caption: 'Pôr do sol na baía' },
+              { src: '/fotos/foto21barco.jpeg', alt: 'Barco de passeio atracado no píer com morros ao fundo', caption: 'Passeio de barco' },
             ].map((photo) => (
               <div key={photo.src} className="relative rounded-2xl overflow-hidden h-72 md:h-96">
                 <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" loading="lazy" />
