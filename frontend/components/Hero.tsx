@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="/fotos/foto00capa.jpeg"
-          alt="Fachada da Pousada Villa & Mar com faixa da marca, sacada longa e garagem coberta"
+          alt="Pôr do sol na praia da Enseada, com o mar refletindo o sol e pessoas na areia"
           className="w-full h-full object-cover brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/90"></div>
