@@ -42,16 +42,21 @@ const Rooms: React.FC = () => {
         </div>
 
         {/* Natureza Local */}
-        <div className="relative rounded-3xl overflow-hidden mb-16">
-          <img
-            src="/fotos/foto00capa.jpeg"
-            alt="Pôr do sol na praia da Enseada, com o mar refletindo o sol e pessoas na areia"
-            className="w-full h-72 md:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-          <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-white">
-            <p className="font-serif italic text-2xl md:text-3xl mb-1">A natureza da Enseada</p>
-            <p className="text-sm md:text-base text-white/90">Pôr do sol na praia, a poucos passos da pousada</p>
+        <div className="mb-16">
+          <p className="text-center font-serif italic text-2xl md:text-3xl text-villa-deep mb-2">A natureza da Enseada</p>
+          <p className="text-center text-slate-600 mb-8">A poucos passos da pousada</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              { src: '/fotos/foto00capa.jpeg', alt: 'Pôr do sol na praia da Enseada, com o mar refletindo o sol', caption: 'Pôr do sol na praia' },
+              { src: '/fotos/foto14coqueiro.jpeg', alt: 'Coqueiro e banco rústico de frente para o mar ao entardecer', caption: 'Recanto à beira-mar' },
+              { src: '/fotos/foto15praia.jpeg', alt: 'Entardecer na praia com pessoas na areia e vegetação nativa', caption: 'Entardecer na praia' },
+            ].map((photo) => (
+              <div key={photo.src} className="relative rounded-2xl overflow-hidden h-72 md:h-96">
+                <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <p className="absolute bottom-4 left-4 text-white text-sm md:text-base font-semibold drop-shadow">{photo.caption}</p>
+              </div>
+            ))}
           </div>
         </div>
 
