@@ -15,8 +15,8 @@ const Gallery: React.FC = () => {
       caption: 'Fachada e Entrada'
     },
     {
-      src: '/fotos/foto02churrasqueira.jpeg',
-      alt: 'Área coberta com churrasqueira de alvenaria e bancada revestida',
+      src: '/fotos/foto12festas.jpeg',
+      alt: 'Varanda gourmet com mesa de madeira rústica, churrasqueira e janelas de vidro',
       caption: 'Área Gourmet com Churrasqueira'
     },
     {
@@ -41,7 +41,7 @@ const Gallery: React.FC = () => {
     },
     {
       src: '/fotos/foto07suite.jpeg',
-      alt: 'Quarto com cama de solteiro, janela ampla e ventilador de teto',
+      alt: 'Suíte com cama de casal, TV e banheiro privativo',
       caption: 'Suíte'
     },
     {
@@ -56,7 +56,7 @@ const Gallery: React.FC = () => {
     },
     {
       src: '/fotos/foto11garagem.jpeg',
-      alt: 'Garagem coberta com colunas e piso estampado',
+      alt: 'Garagem coberta com redes de descanso e piso estampado',
       caption: 'Garagem Coberta'
     }
   ];
