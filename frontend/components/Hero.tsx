@@ -9,8 +9,8 @@ const Hero: React.FC = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/fotos/foto01exterior.jpeg" 
-          alt="Fachada de sobrado com sacada longa, grade frontal e garagem coberta" 
+          src="/fotos/foto00capa.jpeg"
+          alt="Pôr do sol na praia da Enseada, com o mar refletindo o sol e pessoas na areia"
           className="w-full h-full object-cover brightness-75 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/90"></div>

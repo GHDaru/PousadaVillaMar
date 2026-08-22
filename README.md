@@ -249,7 +249,7 @@ All features implemented and tested:
 **Pousada Villa & Mar**
 - Address: Rua Jaguaruna, 244, Ubatuba, São Francisco do Sul - SC
 - Contact: Susana Moreira
-- Phone: (47) 99715-8173
+- Phone: (47) 99262-2233
 - Email: contato@villamarenseada.com.br
 
 ## 📄 License

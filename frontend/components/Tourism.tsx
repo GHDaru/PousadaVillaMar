@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { MapPin, Youtube, Clock, Activity, Accessibility, Sun, Compass } from 'lucide-react';
+import { BRAND } from '../constants';
 
 /**
  * Represents a tourist attraction with complete information for planning visits.
@@ -516,7 +517,7 @@ const Tourism: React.FC = () => {
             Entre em contato para dicas personalizadas!
           </p>
           <a 
-            href={`https://wa.me/5547997158173?text=${encodeURIComponent('Olá! Gostaria de ajuda para montar meu roteiro turístico.')}`}
+            href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=${encodeURIComponent('Olá! Gostaria de ajuda para montar meu roteiro turístico.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-villa-deep px-8 py-4 rounded-full font-bold text-lg hover:bg-villa-gold transition-all hover:scale-105"
