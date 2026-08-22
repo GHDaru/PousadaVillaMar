@@ -13,7 +13,7 @@ export const BRAND = {
   airbnbUrl: 'http://airbnb.com.br/h/casapraiaubatubaenseada',
   bookingUrl: 'https://www.booking.com',
   email: 'contato@villamarenseada.com.br',
-  capacity: '13 hóspedes',
+  capacity: '15 hóspedes',
   rooms: '5 quartos',
   beds: '6 camas',
   bathrooms: '3 banheiros',

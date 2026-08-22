@@ -24,7 +24,7 @@ const About: React.FC = () => {
               <span className="font-serif italic font-normal">feita com carinho para você.</span>
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-8">
-              A Pousada Villa & Mar é um sobrado espaçoso em São Francisco do Sul que acomoda até 13 hóspedes. Com 5 quartos, 6 camas e 3 banheiros, oferecemos o ambiente perfeito para famílias e grupos. Pet friendly, com Wi-Fi rápido, área gourmet com churrasqueira e garagem segura. Um refúgio onde o tempo anda mais devagar.
+              A Pousada Villa & Mar é um sobrado espaçoso em São Francisco do Sul que acomoda até 15 hóspedes. Com 5 quartos, 6 camas e 3 banheiros, oferecemos o ambiente perfeito para famílias e grupos. Pet friendly, com Wi-Fi rápido, área gourmet com churrasqueira e garagem segura. Um refúgio onde o tempo anda mais devagar.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
