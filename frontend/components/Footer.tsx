@@ -43,10 +43,6 @@ const Footer: React.FC = () => {
                 <span className="text-xs uppercase opacity-50">E-mail</span>
                 <span className="font-bold text-white">{BRAND.email}</span>
               </li>
-              <li className="flex flex-col">
-                <span className="text-xs uppercase opacity-50">Atendimento</span>
-                <span className="text-white">24 horas / 7 dias</span>
-              </li>
             </ul>
           </div>
         </div>
