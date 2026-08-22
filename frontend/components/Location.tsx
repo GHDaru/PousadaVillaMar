@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { BRAND } from '../constants';
-import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const Location: React.FC = () => {
   return (
@@ -37,15 +37,6 @@ const Location: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex gap-6 items-start">
-                <div className="bg-villa-sand p-4 rounded-2xl text-villa-deep">
-                  <Clock size={24} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-xl text-villa-deep mb-2">Atendimento</h4>
-                  <p className="text-slate-600">Estamos à disposição 24 horas para melhor atender você e sua família.</p>
-                </div>
-              </div>
             </div>
 
             <div className="mt-12">
