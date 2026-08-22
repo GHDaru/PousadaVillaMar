@@ -35,14 +35,8 @@ const Rooms: React.FC = () => {
   return (
     <section id="quartos" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Acomodações</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-6">Escolha o seu refúgio</h2>
-          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 15 hóspedes. Ou alugue a casa inteira! Toque em um quarto para ver os detalhes e reservar.</p>
-        </div>
-
         {/* Natureza Local */}
-        <div className="mb-16">
+        <div className="mb-20">
           <p className="text-center font-serif italic text-2xl md:text-3xl text-villa-deep mb-2">A natureza de São Francisco do Sul</p>
           <p className="text-center text-slate-600 mb-8">A ilha que conquista: praia, centro histórico e natureza</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -64,6 +58,13 @@ const Rooms: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Acomodações */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Acomodações</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-6">Escolha o seu refúgio</h2>
+          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 15 hóspedes. Ou alugue a casa inteira! Toque em um quarto para ver os detalhes e reservar.</p>
         </div>
 
         {/* All Rooms Grid */}
