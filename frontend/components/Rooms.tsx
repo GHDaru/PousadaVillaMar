@@ -44,7 +44,7 @@ const Rooms: React.FC = () => {
         {/* Natureza Local */}
         <div className="mb-16">
           <p className="text-center font-serif italic text-2xl md:text-3xl text-villa-deep mb-2">A natureza de São Francisco do Sul</p>
-          <p className="text-center text-slate-600 mb-8">A poucos passos da pousada</p>
+          <p className="text-center text-slate-600 mb-8">A ilha que conquista: praia, centro histórico e natureza</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               { src: '/fotos/foto00capa.jpeg', alt: 'Pôr do sol na praia da Enseada, com o mar refletindo o sol', caption: 'Pôr do sol na praia' },
