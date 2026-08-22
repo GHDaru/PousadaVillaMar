@@ -30,7 +30,7 @@ const Rooms: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Acomodações</span>
           <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-6">Escolha o seu refúgio</h2>
-          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 13 hóspedes. Ou alugue a casa inteira!</p>
+          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 15 hóspedes. Ou alugue a casa inteira!</p>
         </div>
 
         {/* Room Selector Menu */}
@@ -56,7 +56,7 @@ const Rooms: React.FC = () => {
         <div className="bg-villa-shell rounded-3xl overflow-hidden border border-slate-200 mb-16">
           <div className="grid md:grid-cols-2 gap-0">
             {/* Image Carousel */}
-            <div className="relative h-96 md:h-auto">
+            <div className="relative aspect-[4/3] w-full overflow-hidden md:self-center md:m-8 md:w-auto md:rounded-2xl md:border md:border-slate-200">
               <img 
                 src={currentImages[currentImageIndex]} 
                 alt={`${selectedRoom.name} - Imagem ${currentImageIndex + 1}`} 
@@ -226,7 +226,7 @@ const Rooms: React.FC = () => {
                 Planejando um aniversário, casamento ou celebração especial? A Villa & Mar oferece a pousada completa para seu evento: 5 quartos, 6 camas, 3 banheiros, sala de estar ampla integrada à cozinha, área gourmet com churrasqueira e garagem coberta. O espaço ideal para reunir amigos e família em uma celebração inesquecível!
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
-                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Até 13 hóspedes</span>
+                <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Até 15 hóspedes</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">5 Quartos • 6 Camas</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Área Gourmet</span>
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Garagem Coberta</span>
