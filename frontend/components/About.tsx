@@ -10,8 +10,8 @@ const About: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/2 relative">
             <div className="grid grid-cols-2 gap-4">
-              <img src="/fotos/foto13fachada.jpeg" alt="Fachada da Pousada Villa & Mar com sacada longa e grade frontal" className="rounded-2xl shadow-lg mt-8" />
-              <img src="/fotos/foto03copa.jpeg" alt="Sala de estar integrada com copa, cozinha e sofás" className="rounded-2xl shadow-lg" />
+              <img src="/fotos/foto13fachada.jpeg" alt="Fachada da Pousada Villa & Mar com sacada longa e grade frontal" className="rounded-2xl shadow-md mt-8 w-full aspect-[3/4] object-cover" />
+              <img src="/fotos/foto03copa.jpeg" alt="Sala de estar integrada com copa, cozinha e sofás" className="rounded-2xl shadow-md w-full aspect-[3/4] object-cover" />
             </div>
             {/* Decoration Element */}
             <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-villa-sea/10 rounded-full blur-3xl"></div>

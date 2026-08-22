@@ -1,6 +1,6 @@
 import React from 'react';
 import { PRICING_CONFIG, formatPrice } from '../pricing';
-import { Calendar, Star } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 const PricingTable: React.FC = () => {
   const regularRooms = ['quarto-01', 'quarto-03', 'quarto-04', 'quarto-05'];
@@ -18,7 +18,7 @@ const PricingTable: React.FC = () => {
 
         <div className="max-w-5xl mx-auto">
           {/* Pricing Table */}
-          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-villa-shell">
+          <div className="bg-white rounded-3xl overflow-hidden border border-slate-200">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -31,12 +31,8 @@ const PricingTable: React.FC = () => {
                       </div>
                     </th>
                     <th className="px-6 py-4 text-center font-bold text-lg">
-                      <div className="flex flex-col items-center gap-1">
-                        <div className="flex items-center gap-2">
-                          <Star className="w-4 h-4 fill-villa-gold text-villa-gold" />
-                          <span>Finais de Semana</span>
-                          <Star className="w-4 h-4 fill-villa-gold text-villa-gold" />
-                        </div>
+                      <div className="flex flex-col items-center">
+                        <span>Finais de Semana</span>
                         <span className="text-sm font-normal opacity-80">(6ª e Sáb)</span>
                       </div>
                     </th>
@@ -57,7 +53,7 @@ const PricingTable: React.FC = () => {
                       </div>
                       <div className="text-xs text-slate-500 mt-1">por noite</div>
                     </td>
-                    <td className="px-6 py-6 text-center bg-villa-gold/10">
+                    <td className="px-6 py-6 text-center bg-villa-shell">
                       <div className="text-2xl font-bold text-villa-deep">
                         {formatPrice(PRICING_CONFIG.rooms[regularRooms[0]].weekendPrice)}
                       </div>
@@ -82,7 +78,7 @@ const PricingTable: React.FC = () => {
                       </div>
                       <div className="text-xs text-slate-500 mt-1">por noite</div>
                     </td>
-                    <td className="px-6 py-6 text-center bg-villa-gold/10">
+                    <td className="px-6 py-6 text-center bg-villa-shell">
                       <div className="text-2xl font-bold text-villa-deep">
                         {formatPrice(PRICING_CONFIG.rooms[suiteRoom].weekendPrice)}
                       </div>
@@ -104,7 +100,7 @@ const PricingTable: React.FC = () => {
                       </div>
                       <div className="text-xs text-slate-500 mt-1">por noite</div>
                     </td>
-                    <td className="px-6 py-6 text-center bg-villa-gold/10">
+                    <td className="px-6 py-6 text-center bg-villa-shell">
                       <div className="text-2xl font-bold text-villa-deep">
                         {formatPrice(PRICING_CONFIG.rooms[pousadaInteira].weekendPrice)}
                       </div>

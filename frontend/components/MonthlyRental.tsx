@@ -5,13 +5,13 @@ import { BRAND } from '../constants';
 
 const MonthlyRental: React.FC = () => {
   return (
-    <section id="aluguel-mensal" className="py-24 bg-gradient-to-br from-villa-shell via-white to-villa-shell/50">
+    <section id="aluguel-mensal" className="py-24 bg-villa-shell">
       <div className="container mx-auto px-4 md:px-8">
         {/* Header with Badge */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-2 bg-gradient-to-r from-villa-gold to-amber-500 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest shadow-lg animate-pulse">
-              <Sparkles size={18} className="animate-spin" style={{ animationDuration: '3s' }} />
+            <span className="inline-flex items-center gap-2 bg-villa-deep text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest">
+              <Sparkles size={16} />
               Novidade
             </span>
           </div>
@@ -25,7 +25,7 @@ const MonthlyRental: React.FC = () => {
 
         {/* Main Content Card */}
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden">
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Left Side - Image and Badge */}
               <div className="relative h-96 md:h-auto">
@@ -97,7 +97,7 @@ const MonthlyRental: React.FC = () => {
                 {/* Monthly Pricing Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   {/* Single Person Monthly */}
-                  <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
+                  <div className="bg-villa-shell border border-slate-200 rounded-2xl p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Users size={20} className="text-villa-sea" />
                       <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">1 Pessoa</span>
@@ -110,7 +110,7 @@ const MonthlyRental: React.FC = () => {
                   </div>
 
                   {/* Couple Monthly */}
-                  <div className="bg-gradient-to-br from-villa-deep to-villa-sea border-2 border-villa-deep rounded-2xl p-6 text-white hover:shadow-xl transition-all relative overflow-hidden">
+                  <div className="bg-villa-deep rounded-2xl p-6 text-white relative overflow-hidden">
                     <div className="absolute top-2 right-2">
                       <span className="bg-villa-gold text-villa-deep text-xs font-bold px-2 py-1 rounded-full">Melhor Custo</span>
                     </div>
@@ -135,7 +135,7 @@ const MonthlyRental: React.FC = () => {
                 {/* Weekly Pricing Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   {/* Single Person Weekly */}
-                  <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
+                  <div className="bg-villa-shell border border-slate-200 rounded-2xl p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Users size={20} className="text-villa-sea" />
                       <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">1 Pessoa</span>
@@ -148,7 +148,7 @@ const MonthlyRental: React.FC = () => {
                   </div>
 
                   {/* Two People Weekly */}
-                  <div className="bg-villa-shell border-2 border-villa-deep/10 rounded-2xl p-6 hover:border-villa-sea hover:shadow-lg transition-all">
+                  <div className="bg-villa-shell border border-slate-200 rounded-2xl p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <Users size={20} className="text-villa-sea" />
                       <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide">2 Pessoas</span>
@@ -169,7 +169,7 @@ const MonthlyRental: React.FC = () => {
 
                 {/* Bed Option Card */}
                 <div className="mb-8">
-                  <div className="bg-gradient-to-br from-amber-50 to-villa-shell border-2 border-villa-gold/30 rounded-2xl p-6 hover:border-villa-gold hover:shadow-xl transition-all relative">
+                  <div className="bg-villa-shell border border-slate-200 rounded-2xl p-6 relative">
                     <div className="absolute top-2 right-2">
                       <span className="bg-villa-gold text-white text-xs font-bold px-2 py-1 rounded-full">Mais Econômico</span>
                     </div>
@@ -204,7 +204,7 @@ const MonthlyRental: React.FC = () => {
                     href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de saber mais sobre o aluguel mensal de quartos na pousada.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 px-6 rounded-xl font-bold hover:bg-[#128C7E] hover:scale-105 transition-all shadow-lg"
+                    className="flex items-center justify-center gap-3 bg-villa-deep text-white py-4 px-6 rounded-full font-bold hover:bg-villa-sea transition-colors"
                   >
                     <MessageCircle size={20} />
                     Consultar Disponibilidade
@@ -219,7 +219,7 @@ const MonthlyRental: React.FC = () => {
 
           {/* Additional Benefits Section */}
           <div className="mt-12 grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all">
+            <div className="bg-white rounded-2xl p-6 text-center border border-slate-200">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-villa-shell rounded-full mb-4">
                 <Home className="text-villa-deep" size={32} />
               </div>
@@ -227,7 +227,7 @@ const MonthlyRental: React.FC = () => {
               <p className="text-sm text-slate-600">Convivência agradável em um espaço acolhedor e seguro</p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all">
+            <div className="bg-white rounded-2xl p-6 text-center border border-slate-200">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-villa-shell rounded-full mb-4">
                 <Coffee className="text-villa-deep" size={32} />
               </div>
@@ -235,7 +235,7 @@ const MonthlyRental: React.FC = () => {
               <p className="text-sm text-slate-600">Todas as contas inclusas - você só precisa aproveitar</p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition-all">
+            <div className="bg-white rounded-2xl p-6 text-center border border-slate-200">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-villa-shell rounded-full mb-4">
                 <Calendar className="text-villa-deep" size={32} />
               </div>
