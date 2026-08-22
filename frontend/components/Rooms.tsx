@@ -1,28 +1,36 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ROOMS, BRAND } from '../constants';
-import { Check, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-react';
 
 const Rooms: React.FC = () => {
-  const [selectedRoom, setSelectedRoom] = useState(ROOMS[0]);
+  const [openRoom, setOpenRoom] = useState<typeof ROOMS[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const handleRoomSelect = (room: typeof ROOMS[0]) => {
-    setSelectedRoom(room);
+  const handleRoomOpen = (room: typeof ROOMS[0]) => {
+    setOpenRoom(room);
     setCurrentImageIndex(0);
   };
 
-  const nextImage = () => {
-    const images = selectedRoom.images || [selectedRoom.imageUrl];
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
+  const handleClose = () => setOpenRoom(null);
 
-  const prevImage = () => {
-    const images = selectedRoom.images || [selectedRoom.imageUrl];
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  useEffect(() => {
+    if (!openRoom) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenRoom(null);
+    };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [openRoom]);
 
-  const currentImages = selectedRoom.images || [selectedRoom.imageUrl];
+  const currentImages = openRoom ? (openRoom.images || [openRoom.imageUrl]) : [];
+
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % currentImages.length);
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length);
 
   return (
     <section id="quartos" className="py-24 bg-white">
@@ -30,146 +38,20 @@ const Rooms: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-villa-sea uppercase tracking-widest text-sm font-bold mb-4 block">Acomodações</span>
           <h2 className="text-4xl md:text-5xl font-bold text-villa-deep mb-6">Escolha o seu refúgio</h2>
-          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 15 hóspedes. Ou alugue a casa inteira!</p>
+          <p className="text-slate-600">Casa espaçosa com 5 quartos, 6 camas e 3 banheiros. Todos com ventilador e Wi-Fi de alta velocidade. Capacidade para até 15 hóspedes. Ou alugue a casa inteira! Toque em um quarto para ver os detalhes e reservar.</p>
         </div>
 
-        {/* Room Selector Menu */}
-        <div className="mb-12">
-          <div className="flex flex-wrap gap-4 justify-center">
-            {ROOMS.map((room) => (
-              <button
-                key={room.id}
-                onClick={() => handleRoomSelect(room)}
-                className={`px-6 py-3 rounded-full font-semibold transition-colors duration-300 ${
-                  selectedRoom.id === room.id
-                    ? 'bg-villa-deep text-white'
-                    : 'bg-villa-shell text-villa-deep border border-slate-200 hover:border-villa-deep'
-                }`}
-              >
-                {room.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Selected Room Details with Carousel */}
-        <div className="bg-villa-shell rounded-3xl overflow-hidden border border-slate-200 mb-16">
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Image Carousel */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden md:self-center md:m-8 md:w-auto md:rounded-2xl md:border md:border-slate-200">
-              <img 
-                src={currentImages[currentImageIndex]} 
-                alt={`${selectedRoom.name} - Imagem ${currentImageIndex + 1}`} 
-                className="w-full h-full object-cover"
-              />
-              {selectedRoom.isSuite && (
-                <span className="absolute top-4 left-4 bg-villa-deep text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">
-                  Suíte Privativa
-                </span>
-              )}
-              
-              {/* Carousel Controls */}
-              {currentImages.length > 1 && (
-                <>
-                  <button
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
-                    aria-label="Imagem anterior"
-                  >
-                    <ChevronLeft className="w-6 h-6 text-villa-deep" />
-                  </button>
-                  <button
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
-                    aria-label="Próxima imagem"
-                  >
-                    <ChevronRight className="w-6 h-6 text-villa-deep" />
-                  </button>
-                  
-                  {/* Image Indicators */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                    {currentImages.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          idx === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
-                        }`}
-                        aria-label={`Ir para imagem ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Room Details */}
-            <div className="p-8 md:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl md:text-4xl font-bold text-villa-deep mb-4">{selectedRoom.name}</h3>
-              <p className="text-slate-600 text-lg mb-6 leading-relaxed">{selectedRoom.description}</p>
-              
-              {/* Price */}
-              {selectedRoom.price && (
-                <div className="mb-6 p-4 bg-white rounded-xl border border-slate-200">
-                  <p className="text-sm text-slate-600 mb-1">Valor</p>
-                  <p className="text-2xl font-bold text-villa-deep">{selectedRoom.price}</p>
-                  <a 
-                    href="#disponibilidade" 
-                    className="text-sm text-villa-sea hover:text-villa-deep font-semibold underline mt-2 inline-block"
-                    aria-label="Ver tabela de disponibilidade completa de todos os quartos"
-                  >
-                    Ver disponibilidade completa
-                  </a>
-                </div>
-              )}
-
-              {/* Features */}
-              <div className="space-y-3 mb-8">
-                {selectedRoom.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3 text-slate-700">
-                    <Check size={18} className="text-villa-sea flex-shrink-0" /> 
-                    <span>{feature}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* WhatsApp Reservation Button */}
-              <div className="flex flex-col gap-3">
-                <a 
-                  href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva para ${selectedRoom.name}.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 bg-villa-deep text-white py-4 rounded-full font-bold hover:bg-villa-sea transition-colors"
-                >
-                  <MessageCircle size={20} />
-                  Reservar pelo WhatsApp
-                </a>
-
-                {/* Booking and Airbnb Links */}
-                <div className="grid grid-cols-2 gap-3">
-                  {selectedRoom.bookingUrl && (
-                    <a
-                      href={selectedRoom.bookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
-                    >
-                      Ver no Booking
-                    </a>
-                  )}
-                  {selectedRoom.airbnbUrl && (
-                    <a
-                      href={selectedRoom.airbnbUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
-                    >
-                      Ver no Airbnb
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+        {/* Natureza Local */}
+        <div className="relative rounded-3xl overflow-hidden mb-16">
+          <img
+            src="/fotos/foto00capa.jpeg"
+            alt="Pôr do sol na praia da Enseada, com o mar refletindo o sol e pessoas na areia"
+            className="w-full h-72 md:h-96 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-white">
+            <p className="font-serif italic text-2xl md:text-3xl mb-1">A natureza da Enseada</p>
+            <p className="text-sm md:text-base text-white/90">Pôr do sol na praia, a poucos passos da pousada</p>
           </div>
         </div>
 
@@ -178,15 +60,17 @@ const Rooms: React.FC = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-villa-deep mb-8 text-center">Todos os Quartos</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {ROOMS.map((room) => (
-              <div 
-                key={room.id} 
-                className="group bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
-                onClick={() => handleRoomSelect(room)}
+              <button
+                key={room.id}
+                type="button"
+                className="group text-left bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-md transition-shadow duration-300 cursor-pointer"
+                onClick={() => handleRoomOpen(room)}
+                aria-label={`Ver detalhes de ${room.name}`}
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={room.imageUrl} 
-                    alt={room.name} 
+                  <img
+                    src={room.imageUrl}
+                    alt={room.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   {room.isSuite && (
@@ -201,21 +85,140 @@ const Rooms: React.FC = () => {
                   {room.price && (
                     <>
                       <p className="text-villa-deep font-semibold text-sm">{room.price}</p>
-                      <a 
-                        href="#disponibilidade" 
-                        className="text-xs text-villa-sea hover:text-villa-deep font-semibold underline mt-1 inline-block"
-                        onClick={(e) => e.stopPropagation()}
-                        aria-label={`Ver disponibilidade para ${room.name}`}
-                      >
-                        Ver disponibilidade
-                      </a>
+                      <span className="text-xs text-villa-sea font-semibold underline mt-1 inline-block">
+                        Ver detalhes e reservar
+                      </span>
                     </>
                   )}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
+
+        {/* Room Details Modal */}
+        {openRoom && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={`Detalhes de ${openRoom.name}`}>
+            <div className="absolute inset-0 bg-black/60" onClick={handleClose}></div>
+            <div className="relative bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Image Carousel */}
+              <div className="relative aspect-[4/3] sm:aspect-[16/9] w-full overflow-hidden">
+                <img
+                  src={currentImages[currentImageIndex]}
+                  alt={`${openRoom.name} - Imagem ${currentImageIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                {openRoom.isSuite && (
+                  <span className="absolute top-4 left-4 bg-villa-deep text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">
+                    Suíte Privativa
+                  </span>
+                )}
+                <button
+                  onClick={handleClose}
+                  className="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+                  aria-label="Fechar detalhes"
+                >
+                  <X className="w-5 h-5 text-villa-deep" />
+                </button>
+
+                {currentImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
+                      aria-label="Imagem anterior"
+                    >
+                      <ChevronLeft className="w-6 h-6 text-villa-deep" />
+                    </button>
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
+                      aria-label="Próxima imagem"
+                    >
+                      <ChevronRight className="w-6 h-6 text-villa-deep" />
+                    </button>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                      {currentImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentImageIndex(idx)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            idx === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
+                          }`}
+                          aria-label={`Ir para imagem ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Room Details */}
+              <div className="p-6 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-villa-deep mb-3">{openRoom.name}</h3>
+                <p className="text-slate-600 mb-5 leading-relaxed">{openRoom.description}</p>
+
+                {openRoom.price && (
+                  <div className="mb-5 p-4 bg-villa-shell rounded-xl border border-slate-200">
+                    <p className="text-sm text-slate-600 mb-1">Valor</p>
+                    <p className="text-xl md:text-2xl font-bold text-villa-deep">{openRoom.price}</p>
+                    <a
+                      href="#disponibilidade"
+                      onClick={handleClose}
+                      className="text-sm text-villa-sea hover:text-villa-deep font-semibold underline mt-2 inline-block"
+                      aria-label="Ver tabela de disponibilidade completa de todos os quartos"
+                    >
+                      Ver disponibilidade completa
+                    </a>
+                  </div>
+                )}
+
+                <div className="space-y-2 mb-6">
+                  {openRoom.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 text-slate-700">
+                      <Check size={18} className="text-villa-sea flex-shrink-0" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <a
+                    href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva para ${openRoom.name}.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3 bg-villa-deep text-white py-4 rounded-full font-bold hover:bg-villa-sea transition-colors"
+                  >
+                    <MessageCircle size={20} />
+                    Reservar pelo WhatsApp
+                  </a>
+                  <div className="grid grid-cols-2 gap-3">
+                    {openRoom.bookingUrl && (
+                      <a
+                        href={openRoom.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
+                      >
+                        Ver no Booking
+                      </a>
+                    )}
+                    {openRoom.airbnbUrl && (
+                      <a
+                        href={openRoom.airbnbUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-white text-villa-deep border border-slate-300 py-3 rounded-full font-semibold hover:border-villa-deep transition-colors text-sm"
+                      >
+                        Ver no Airbnb
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Pousada Inteira para Festas Section */}
         <div className="bg-villa-deep rounded-3xl p-10 md:p-16 text-white">
@@ -233,7 +236,7 @@ const Rooms: React.FC = () => {
                 <span className="bg-white/10 px-4 py-2 rounded-full border border-white/20 text-sm">Ideal para Eventos</span>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a 
+                <a
                   href={`https://wa.me/${BRAND.phoneFormatted.replace(/\D/g, '')}?text=Olá! Gostaria de fazer uma reserva da pousada inteira para uma festa ou evento.`}
                   target="_blank"
                   rel="noopener noreferrer"
